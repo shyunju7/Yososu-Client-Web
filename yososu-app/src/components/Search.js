@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { CgSearch } from "react-icons/cg";
 const Container = styled.div`
-  width: 30%;
+  width: ${(props) => (props.show ? "30%" : "0%")};
   height: 100%;
   background-color: #ffffff;
   border-right: 2px solid #dddddd;
   display: flex;
   flex-direction: column;
   align-items: center;
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
 `;
 
 const SearchWrapper = styled.div`
@@ -50,13 +51,14 @@ const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-const Search = () => {
+const Search = ({ showSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const onChangeSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+
   return (
-    <Container>
+    <Container show={showSearch}>
       <SearchWrapper>
         <SearchInput
           placeholder="지역 이름으로 장소를 검색해보세요!"
