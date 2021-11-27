@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import MapComponent from "./components/Map";
-
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Main from "../src/pages/Main";
 function App() {
   const [position, setPosition] = useState({
     latitude: 33.450701,
@@ -19,7 +20,9 @@ function App() {
 
   return (
     <div>
-      <MapComponent userPosition={position} />
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }
