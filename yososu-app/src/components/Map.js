@@ -16,6 +16,12 @@ const MapComponent = ({ currentPosition }) => {
       level: 3,
     };
     const map = new kakao.maps.Map(container, mapOptions);
+
+    // map controller
+    let mapTypeControl = new kakao.maps.MapTypeControl();
+    let zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
   }, []);
   return <Container id="map" />;
 };
