@@ -3,17 +3,19 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "../src/pages/Main";
 function App() {
-  const [position, setPosition] = useState({
+  const [currentPosition, setCurrentPosition] = useState({
     latitude: 33.450701,
     longitude: 126.570667,
   });
   useEffect(() => {
+    console.log(navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
 
-        setPosition(latitude, longitude);
+        console.log(`current position : ${latitude}, ${longitude}`);
+        setCurrentPosition(latitude, longitude);
       });
     }
   }, []);
@@ -21,7 +23,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Main />
+      <Main currentPosition={currentPosition} />
       <Footer />
     </div>
   );

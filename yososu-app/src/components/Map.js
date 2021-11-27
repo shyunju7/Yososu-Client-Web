@@ -7,9 +7,9 @@ const Container = styled.div`
 `;
 const { kakao } = window;
 
-const MapComponent = ({ userPosition }) => {
+const MapComponent = ({ currentPosition }) => {
   useEffect(() => {
-    console.log(`position,`, userPosition);
+    console.log(`position,`, currentPosition);
     const container = document.getElementById("map");
     const mapOptions = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -17,7 +17,7 @@ const MapComponent = ({ userPosition }) => {
     };
     const map = new kakao.maps.Map(container, mapOptions);
   }, []);
-  return <Container id="map"></Container>;
+  return <Container id="map" />;
 };
 
 export default MapComponent;
