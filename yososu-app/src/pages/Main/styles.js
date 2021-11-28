@@ -23,5 +23,4 @@ export const HideButton = styled.button`
   border-left: none;
   background-color: #ffffff;
   height: 2rem;
-  align-items: center;
 `;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -7,24 +7,34 @@ const Container = styled.div`
 `;
 const { kakao } = window;
 
-const MapComponent = ({ currentPosition, showSearch }) => {
+const MapComponent = ({ showSearch }) => {
+  const mapRef = useRef();
+  const [kakaoMap, setKakaoMap] = useState(null);
+
   useEffect(() => {
-    const container = document.getElementById("map");
     const mapOptions = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
     };
-    const map = new kakao.maps.Map(container, mapOptions);
+    const map = new kakao.maps.Map(mapRef.current, mapOptions);
+    setKakaoMap(map);
+  }, [mapRef]);
 
-    // map controller
-    // let mapTypeControl = new kakao.maps.MapTypeControl();
-    // let zoomControl = new kakao.maps.ZoomControl();
-    // map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-    // map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-    map.relayout();
-  }, [showSearch]);
+  useEffect(() => {
+    if (kakaoMap === null) return;
 
-  return <Container id="map" show={showSearch} />;
+    setMapControl();
+  }, [kakaoMap, showSearch]);
+
+  const setMapControl = () => {
+    let mapTypeControl = new kakao.maps.MapTypeControl();
+    let zoomControl = new kakao.maps.ZoomControl();
+    kakaoMap.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+    kakaoMap.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    kakaoMap.relayout();
+  };
+
+  return <Container id="map" show={showSearch} ref={mapRef} />;
 };
 
 export default MapComponent;
