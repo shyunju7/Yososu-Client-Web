@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { CgSearch } from "react-icons/cg";
+import SearchList from "./SearchList";
 const Container = styled.div`
   width: ${(props) => (props.show ? "30%" : "0%")};
   height: 100%;
@@ -57,7 +58,7 @@ const Search = ({ showSearch }) => {
   const onChangeSearch = (event) => {
     setSearchTerm(event.target.value);
   };
-
+  const list = [];
   return (
     <Container show={showSearch}>
       <SearchWrapper>
@@ -70,6 +71,8 @@ const Search = ({ showSearch }) => {
           <CgSearch color="#C4C4C4" />
         </SearchButton>
       </SearchWrapper>
+
+      <SearchList list={list} />
     </Container>
   );
 };

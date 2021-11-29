@@ -2,7 +2,7 @@ import React from "react";
 import { MdLocationOn } from "react-icons/md";
 import { ImPhone } from "react-icons/im";
 import { WiTime3 } from "react-icons/wi";
-import { IoBag } from "react-icons/io";
+import { IoBagOutline } from "react-icons/io5";
 const SearchListItem = ({ title, address, phoneNum, operatingTime, stock }) => {
   return (
     <div>
@@ -20,7 +20,7 @@ const SearchListItem = ({ title, address, phoneNum, operatingTime, stock }) => {
         {operatingTime}
       </span>
       <span>
-        <IoBag />
+        <IoBagOutline />
         {stock}
       </span>
     </div>
