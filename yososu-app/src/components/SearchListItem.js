@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  IoBagOutline,
   IoTimeOutline,
   IoLocationOutline,
   IoCallOutline,
 } from "react-icons/io5";
 import styled from "styled-components";
+import Tag from "./Tag";
 
 const Container = styled.div`
   display: flex;
@@ -41,6 +41,7 @@ const SearchListItem = ({
   operatingTime,
   stock,
   setClickItem,
+  price,
 }) => {
   const onClickItem = () => {
     setClickItem(address);
@@ -48,7 +49,8 @@ const SearchListItem = ({
 
   return (
     <Container onClick={onClickItem}>
-      <Title>{title}</Title>
+      <Tag stock={stock} price={price} />
+      <Content>{title}</Content>
       <Content>
         <IoLocationOutline />
         {address}
@@ -60,10 +62,6 @@ const SearchListItem = ({
       <Content>
         <IoTimeOutline />
         {operatingTime}
-      </Content>
-      <Content>
-        <IoBagOutline />
-        {stock}
       </Content>
     </Container>
   );

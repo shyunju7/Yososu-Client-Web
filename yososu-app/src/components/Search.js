@@ -100,7 +100,7 @@ const Search = ({ showSearch, setClickItem }) => {
   ];
   return (
     <Container show={showSearch}>
-      <SearchWrapper>
+      {/* <SearchWrapper>
         <SearchInput
           placeholder="지역 이름으로 장소를 검색해보세요!"
           onChange={onChangeSearch}
@@ -109,7 +109,7 @@ const Search = ({ showSearch, setClickItem }) => {
         <SearchButton>
           <CgSearch color="#C4C4C4" />
         </SearchButton>
-      </SearchWrapper>
+      </SearchWrapper> */}
 
       <SearchList list={list} setClickItem={setClickItem} />
     </Container>

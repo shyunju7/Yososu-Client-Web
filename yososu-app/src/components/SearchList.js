@@ -19,6 +19,7 @@ const SearchList = ({ list, setClickItem }) => {
             address={item.address}
             stock={item.stock}
             phoneNum={item.phoneNum}
+            price={item.price}
             setClickItem={setClickItem}
           />
         ))
