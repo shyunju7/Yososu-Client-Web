@@ -23,6 +23,7 @@ const MapComponent = ({ showSearch }) => {
   useEffect(() => {
     if (kakaoMap === null) return;
     setMapControl();
+    kakaoMap.relayout();
   }, [kakaoMap]);
 
   useEffect(() => {
