@@ -1,29 +1,60 @@
 import React from "react";
-import { MdLocationOn } from "react-icons/md";
-import { ImPhone } from "react-icons/im";
-import { WiTime3 } from "react-icons/wi";
-import { IoBagOutline } from "react-icons/io5";
+import {
+  IoBagOutline,
+  IoTimeOutline,
+  IoLocationOutline,
+  IoCallOutline,
+} from "react-icons/io5";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 120px;
+  padding: 20px;
+
+  border-bottom: 2px solid #f5f5f5;
+
+  &:hover {
+    background-color: rgba(0, 35, 235, 0.1);
+  }
+`;
+
+const Title = styled.h3`
+  font-size: 1rem;
+  color: #1a39ed;
+  margin: unset;
+  margin-bottom: 12px;
+`;
+
+const Content = styled.div`
+  font-size: 0.8rem;
+  color: #c4c4c4;
+  padding: 2px auto;
+`;
+
 const SearchListItem = ({ title, address, phoneNum, operatingTime, stock }) => {
   return (
-    <div>
-      <h2>{title}</h2>
-      <span>
-        <MdLocationOn />
+    <Container>
+      <Title>{title}</Title>
+      <Content>
+        <IoLocationOutline />
         {address}
-      </span>
-      <span>
-        <ImPhone />
+      </Content>
+      <Content>
+        <IoCallOutline />
         {phoneNum}
-      </span>
-      <span>
-        <WiTime3 />
+      </Content>
+      <Content>
+        <IoTimeOutline />
         {operatingTime}
-      </span>
-      <span>
+      </Content>
+      <Content>
         <IoBagOutline />
         {stock}
-      </span>
-    </div>
+      </Content>
+    </Container>
   );
 };
 

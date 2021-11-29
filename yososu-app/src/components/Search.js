@@ -58,7 +58,24 @@ const Search = ({ showSearch }) => {
   const onChangeSearch = (event) => {
     setSearchTerm(event.target.value);
   };
-  const list = [];
+  const list = [
+    {
+      id: 1,
+      title: "네모빔 주유소",
+      address: "서울특별시 네모구 세모동 동그라미34",
+      operatingTime: "매일 24시간",
+      phoneNum: "010-1234-1234",
+      stock: "1200",
+    },
+    {
+      id: 2,
+      title: "세모빔 주유소",
+      address: "서울특별시 네모구 세모동 동그라미34",
+      operatingTime: "매일 24시간",
+      phoneNum: "010-1234-1234",
+      stock: "1200",
+    },
+  ];
   return (
     <Container show={showSearch}>
       <SearchWrapper>
