@@ -10,6 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   visibility: ${(props) => (props.show ? "visible" : "hidden")};
+  transition: ${(props) => (props.show ? "0.1s ease-in" : "0.1s ease-in-out")};
 `;
 
 const SearchWrapper = styled.div`

@@ -3,7 +3,7 @@ import MapComponent from "../../components/Map";
 import Search from "../../components/Search";
 import { ButtonWrapper, Container, HideButton } from "./styles";
 import { BsArrowBarLeft, BsArrowBarRight } from "react-icons/bs";
-const MainPresenter = ({ currentPosition }) => {
+const MainPresenter = () => {
   const [showSearch, setShowSearch] = useState(true);
   const toggleSearchComponent = () => setShowSearch((prev) => !prev);
   return (
@@ -14,7 +14,7 @@ const MainPresenter = ({ currentPosition }) => {
         </HideButton>
       </ButtonWrapper>
       <Search showSearch={showSearch} />
-      <MapComponent currentPosition={currentPosition} showSearch={showSearch} />
+      <MapComponent showSearch={showSearch} setShowSearch={setShowSearch} />
     </Container>
   );
 };
