@@ -34,9 +34,20 @@ const Content = styled.div`
   padding: 2px auto;
 `;
 
-const SearchListItem = ({ title, address, phoneNum, operatingTime, stock }) => {
+const SearchListItem = ({
+  title,
+  address,
+  phoneNum,
+  operatingTime,
+  stock,
+  setClickItem,
+}) => {
+  const onClickItem = () => {
+    setClickItem(address);
+  };
+
   return (
-    <Container>
+    <Container onClick={onClickItem}>
       <Title>{title}</Title>
       <Content>
         <IoLocationOutline />

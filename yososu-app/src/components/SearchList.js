@@ -7,7 +7,7 @@ const Container = styled.div`
   margin: 20px;
 `;
 
-const SearchList = ({ list }) => {
+const SearchList = ({ list, setClickItem }) => {
   return (
     <Container>
       {list.length > 0 ? (
@@ -19,6 +19,7 @@ const SearchList = ({ list }) => {
             address={item.address}
             stock={item.stock}
             phoneNum={item.phoneNum}
+            setClickItem={setClickItem}
           />
         ))
       ) : (

@@ -5,6 +5,7 @@ import { ButtonWrapper, Container, HideButton } from "./styles";
 import { BsArrowBarLeft, BsArrowBarRight } from "react-icons/bs";
 const MainPresenter = () => {
   const [showSearch, setShowSearch] = useState(true);
+  const [isClickedItem, setClickItem] = useState("");
   const toggleSearchComponent = () => setShowSearch((prev) => !prev);
   return (
     <Container>
@@ -13,8 +14,12 @@ const MainPresenter = () => {
           {showSearch ? <BsArrowBarLeft /> : <BsArrowBarRight />}
         </HideButton>
       </ButtonWrapper>
-      <Search showSearch={showSearch} />
-      <MapComponent showSearch={showSearch} setShowSearch={setShowSearch} />
+      <Search showSearch={showSearch} setClickItem={setClickItem} />
+      <MapComponent
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
+        isClickedItem={isClickedItem}
+      />
     </Container>
   );
 };
