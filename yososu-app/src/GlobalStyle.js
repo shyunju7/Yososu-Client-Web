@@ -15,7 +15,6 @@ body {
     font-size : 16px;
     background-color : #ffffff;
     color : #303030;
-    padding-top: 50px ;
     overflow-x : hidden;
 }
 
