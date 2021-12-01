@@ -5,6 +5,7 @@ import SearchListItem from "./SearchListItem";
 const Container = styled.div`
   width: 100%;
   margin: 20px;
+  overflow-y: scroll;
 `;
 
 const SearchList = ({ list, setClickItem }) => {
