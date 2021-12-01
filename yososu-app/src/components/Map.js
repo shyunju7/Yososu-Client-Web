@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: ${(props) => (props.show ? "70%" : "100%")};
-  height: 100%;
+  width: 710px;
+  margin: 20px;
+  border-radius: 12px;
 `;
 const { kakao } = window;
 

@@ -17,6 +17,7 @@ const Container = styled.div`
   border-bottom: 2px solid #f5f5f5;
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
   margin-bottom: 12px;
+  margin-left: 10px;
   cursor: pointer;
   &:hover {
     background-color: #f8f5f5;

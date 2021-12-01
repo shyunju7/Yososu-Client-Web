@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CgSearch } from "react-icons/cg";
 import SearchList from "./SearchList";
 const Container = styled.div`
-  width: ${(props) => (props.show ? "30%" : "0%")};
+  width: calc(100vw - 710px);
   height: 100%;
   background-color: #ffffff;
   border-right: 2px solid #dddddd;
@@ -12,6 +12,13 @@ const Container = styled.div`
   align-items: center;
   visibility: ${(props) => (props.show ? "visible" : "hidden")};
   transition: ${(props) => (props.show ? "0.1s ease-in" : "0.1s ease-in-out")};
+`;
+
+const Title = styled.h1`
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3e4958;
+  margin-top: 12px;
 `;
 
 const SearchWrapper = styled.div`
@@ -100,6 +107,8 @@ const Search = ({ showSearch, setClickItem }) => {
   ];
   return (
     <Container show={showSearch}>
+      <Title>YOSOSU 판매 주유소 목록</Title>
+
       {/* <SearchWrapper>
         <SearchInput
           placeholder="지역 이름으로 장소를 검색해보세요!"

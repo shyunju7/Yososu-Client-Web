@@ -9,11 +9,11 @@ const MainPresenter = () => {
   const toggleSearchComponent = () => setShowSearch((prev) => !prev);
   return (
     <Container>
-      <ButtonWrapper show={showSearch}>
+      {/* <ButtonWrapper show={showSearch}>
         <HideButton onClick={toggleSearchComponent}>
           {showSearch ? <BsArrowBarLeft /> : <BsArrowBarRight />}
         </HideButton>
-      </ButtonWrapper>
+      </ButtonWrapper> */}
       <Search showSearch={showSearch} setClickItem={setClickItem} />
       <MapComponent
         showSearch={showSearch}

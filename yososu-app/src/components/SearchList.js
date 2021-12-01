@@ -4,8 +4,11 @@ import SearchListItem from "./SearchListItem";
 
 const Container = styled.div`
   width: 100%;
-  margin: 20px;
+  background-color: transparent;
   overflow-y: scroll;
+  display: grid;
+  gap: 0px;
+  grid-template-columns: 1fr 1fr;
 `;
 
 const SearchList = ({ list, setClickItem }) => {
