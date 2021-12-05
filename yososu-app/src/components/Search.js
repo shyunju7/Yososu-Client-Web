@@ -108,18 +108,6 @@ const Search = ({ showSearch, setClickItem }) => {
   return (
     <Container show={showSearch}>
       <Title>YOSOSU 판매 주유소 목록</Title>
-
-      {/* <SearchWrapper>
-        <SearchInput
-          placeholder="지역 이름으로 장소를 검색해보세요!"
-          onChange={onChangeSearch}
-          value={searchTerm}
-        />
-        <SearchButton>
-          <CgSearch color="#C4C4C4" />
-        </SearchButton>
-      </SearchWrapper> */}
-
       <SearchList list={list} setClickItem={setClickItem} />
     </Container>
   );
