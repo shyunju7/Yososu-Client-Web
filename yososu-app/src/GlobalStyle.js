@@ -44,6 +44,7 @@ body {
     background-color : #ffffff;
     color : #303030;
     overflow-x : hidden;
+    color: #303030;
 }
 
 `;
