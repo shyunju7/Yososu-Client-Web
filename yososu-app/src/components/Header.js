@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  height: 50px;
+  height: 56px;
   border-bottom: 2px solid #e5e5e5;
   display: flex;
   align-items: center;
@@ -12,6 +12,7 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 1.1rem;
   font-weight: 700;
+  font-family: S-CoreDream-8Heavy;
   color: #0023eb;
   margin-left: 38px;
 `;
