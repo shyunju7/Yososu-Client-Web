@@ -20,6 +20,16 @@ const Header = () => {
   return (
     <Container>
       <Title>YOSOSU</Title>
+      {/* <SearchWrapper>
+        <SearchInput
+          placeholder="지역 이름으로 장소를 검색해보세요!"
+          onChange={onChangeSearch}
+          value={searchTerm}
+        />
+        <SearchButton>
+          <CgSearch color="#C4C4C4" />
+        </SearchButton>
+      </SearchWrapper> */}
     </Container>
   );
 };
