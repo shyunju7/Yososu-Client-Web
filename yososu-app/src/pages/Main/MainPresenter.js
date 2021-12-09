@@ -1,25 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MapComponent from "../../components/Map";
 import Search from "../../components/Search";
-import { ButtonWrapper, Container, HideButton } from "./styles";
-import { BsArrowBarLeft, BsArrowBarRight } from "react-icons/bs";
-const MainPresenter = () => {
+import { Container, ListButton } from "./styles";
+const MainPresenter = ({ result }) => {
   const [showSearch, setShowSearch] = useState(true);
   const [isClickedItem, setClickItem] = useState("");
-  const toggleSearchComponent = () => setShowSearch((prev) => !prev);
+  const [windowSize, setResizewindow] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setResizewindow(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Container>
-      {/* <ButtonWrapper show={showSearch}>
-        <HideButton onClick={toggleSearchComponent}>
-          {showSearch ? <BsArrowBarLeft /> : <BsArrowBarRight />}
-        </HideButton>
-      </ButtonWrapper> */}
-      <Search showSearch={showSearch} setClickItem={setClickItem} />
+      {windowSize <= 740 ? (
+        <ListButton>목록보기</ListButton>
+      ) : (
+        <Search
+          showSearch={showSearch}
+          setClickItem={setClickItem}
+          result={result}
+        />
+      )}
       <MapComponent
         showSearch={showSearch}
         setShowSearch={setShowSearch}
         isClickedItem={isClickedItem}
+        result={result}
       />
+
+      {/* <Guide /> */}
     </Container>
   );
 };

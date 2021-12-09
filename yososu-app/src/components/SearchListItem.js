@@ -47,7 +47,7 @@ const Tag = styled.span`
 `;
 
 const Content = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: #3e4958;
   margin-bottom: 6px;
   display: flex;
