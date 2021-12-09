@@ -14,19 +14,13 @@ const Container = styled.div`
   transition: ${(props) => (props.show ? "0.1s ease-in" : "0.1s ease-in-out")};
 `;
 
-const Title = styled.h1`
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #3e4958;
-  margin-top: 12px;
-`;
-
 const SearchWrapper = styled.div`
   position: relative;
   width: 100%;
   background-color: transparent;
   display: flex;
   justify-content: center;
+  margin-bottom: 32px;
 `;
 
 const SearchInput = styled.input`
@@ -107,9 +101,7 @@ const Search = ({ showSearch, setClickItem }) => {
   ];
   return (
     <Container show={showSearch}>
-      <Title>YOSOSU 판매 주유소 목록</Title>
-
-      {/* <SearchWrapper>
+      <SearchWrapper>
         <SearchInput
           placeholder="지역 이름으로 장소를 검색해보세요!"
           onChange={onChangeSearch}
@@ -118,7 +110,7 @@ const Search = ({ showSearch, setClickItem }) => {
         <SearchButton>
           <CgSearch color="#C4C4C4" />
         </SearchButton>
-      </SearchWrapper> */}
+      </SearchWrapper>
 
       <SearchList list={list} setClickItem={setClickItem} />
     </Container>
