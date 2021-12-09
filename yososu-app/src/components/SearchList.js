@@ -3,11 +3,10 @@ import styled from "styled-components";
 import SearchListItem from "./SearchListItem";
 
 const Container = styled.div`
-  width: 100%;
   background-color: transparent;
   overflow-y: scroll;
   display: grid;
-  gap: 0px;
+  gap: 2px 12px;
   grid-template-columns: 1fr 1fr;
 `;
 

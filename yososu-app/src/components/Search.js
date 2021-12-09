@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CgSearch } from "react-icons/cg";
+import { RiSearchLine } from "react-icons/ri";
 import SearchList from "./SearchList";
 const Container = styled.div`
   width: calc(100vw - 710px);
@@ -25,12 +25,14 @@ const SearchWrapper = styled.div`
 
 const SearchInput = styled.input`
   width: 80%;
+  height: 52px;
   padding: 0.5rem;
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: #ffffff;
-  border: 2px solid #d4d4d4;
+  border: 1px solid #d3d3d3;
+  font-family: S-CoreDream-3Light;
   margin-top: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #303030;
 
   &::placeholder {
@@ -50,7 +52,7 @@ const SearchButton = styled.button`
   width: 1rem;
   height: 1rem;
   top: 50%;
-  right: 2.2rem;
+  right: 14%;
   cursor: pointer;
 `;
 
@@ -108,7 +110,7 @@ const Search = ({ showSearch, setClickItem }) => {
           value={searchTerm}
         />
         <SearchButton>
-          <CgSearch color="#C4C4C4" />
+          <RiSearchLine size="1rem" color="#C4C4C4" />
         </SearchButton>
       </SearchWrapper>
 

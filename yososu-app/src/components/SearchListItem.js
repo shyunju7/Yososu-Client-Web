@@ -8,15 +8,14 @@ import {
   RiPhoneFill,
 } from "react-icons/ri";
 import styled from "styled-components";
-
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 286px;
-  height: 128px;
-  padding: 20px;
   border-bottom: 2px solid #f5f5f5;
-  margin-bottom: 12px;
+  padding: 20px;
+  margin-top: 12px;
   margin-left: 10px;
   cursor: pointer;
   &:hover {
@@ -71,13 +70,19 @@ const SearchListItem = ({
       <Title>{title}</Title>
 
       <TagContainer>
-        <Tag aria-label="price" role="img">
-          <RiMoneyDollarCircleFill color="#0023eb" size="1rem" /> {price}
-        </Tag>
-
-        <Tag aria-label="stock" role="img">
-          <RiContrastDrop2Line color="#0023eb" size="1rem" /> {stock}
-        </Tag>
+        <OverlayTrigger placement="top-start" overlay={<Tooltip>가격</Tooltip>}>
+          <Tag aria-label="price" role="img">
+            <RiMoneyDollarCircleFill color="#0023eb" size="1rem" /> {price}
+          </Tag>
+        </OverlayTrigger>
+        <OverlayTrigger
+          placement="top-start"
+          overlay={<Tooltip>재고량</Tooltip>}
+        >
+          <Tag aria-label="stock" role="img">
+            <RiContrastDrop2Line color="#0023eb" size="1rem" /> {stock}
+          </Tag>
+        </OverlayTrigger>
       </TagContainer>
 
       <Content>
