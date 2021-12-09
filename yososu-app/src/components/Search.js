@@ -97,8 +97,8 @@ const Search = ({ showSearch, setClickItem }) => {
       address: "울산 울주군 언양읍 경부고속도로 44",
       operatingTime: "매일 24시간",
       phoneNum: "052-263-6146",
-      stock: "500",
-      price: "10",
+      stock: "0",
+      price: "1320",
     },
   ];
   return (

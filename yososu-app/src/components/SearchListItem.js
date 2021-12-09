@@ -4,9 +4,10 @@ import {
   RiContrastDrop2Line,
   RiMoneyDollarCircleFill,
   RiMapPin2Fill,
-  RiHistoryFill,
   RiPhoneFill,
 } from "react-icons/ri";
+
+import { MdOutlineInvertColorsOff } from "react-icons/md";
 import styled from "styled-components";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -48,8 +49,9 @@ const Tag = styled.span`
 const Content = styled.div`
   font-size: 0.7rem;
   color: #3e4958;
-  padding: 2px auto;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const SearchListItem = ({
@@ -72,7 +74,8 @@ const SearchListItem = ({
       <TagContainer>
         <OverlayTrigger placement="top-start" overlay={<Tooltip>가격</Tooltip>}>
           <Tag aria-label="price" role="img">
-            <RiMoneyDollarCircleFill color="#0023eb" size="1rem" /> {price}
+            <RiMoneyDollarCircleFill color="#0023eb" size="0.8rem" /> 가격{" "}
+            {price}
           </Tag>
         </OverlayTrigger>
         <OverlayTrigger
@@ -80,7 +83,12 @@ const SearchListItem = ({
           overlay={<Tooltip>재고량</Tooltip>}
         >
           <Tag aria-label="stock" role="img">
-            <RiContrastDrop2Line color="#0023eb" size="1rem" /> {stock}
+            {stock === "0" ? (
+              <MdOutlineInvertColorsOff color="#EA3535" size="0.8rem" />
+            ) : (
+              <RiContrastDrop2Line color="#0023eb" size="0.8rem" />
+            )}
+            재고량 {stock}
           </Tag>
         </OverlayTrigger>
       </TagContainer>
