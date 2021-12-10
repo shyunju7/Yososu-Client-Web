@@ -9,8 +9,6 @@ import {
 
 import { MdOutlineInvertColorsOff } from "react-icons/md";
 import styled from "styled-components";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,25 +70,17 @@ const SearchListItem = ({
       <Title>{title}</Title>
 
       <TagContainer>
-        <OverlayTrigger placement="top-start" overlay={<Tooltip>가격</Tooltip>}>
-          <Tag aria-label="price" role="img">
-            <RiMoneyDollarCircleFill color="#0023eb" size="0.8rem" /> 가격{" "}
-            {price}
-          </Tag>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="top-start"
-          overlay={<Tooltip>재고량</Tooltip>}
-        >
-          <Tag aria-label="stock" role="img">
-            {stock === "0" ? (
-              <MdOutlineInvertColorsOff color="#EA3535" size="0.8rem" />
-            ) : (
-              <RiContrastDrop2Line color="#0023eb" size="0.8rem" />
-            )}
-            재고량 {stock}
-          </Tag>
-        </OverlayTrigger>
+        <Tag aria-label="price" role="img">
+          <RiMoneyDollarCircleFill color="#0023eb" size="0.8rem" /> 가격 {price}
+        </Tag>
+        <Tag aria-label="stock" role="img">
+          {stock === "0" ? (
+            <MdOutlineInvertColorsOff color="#EA3535" size="0.8rem" />
+          ) : (
+            <RiContrastDrop2Line color="#0023eb" size="0.8rem" />
+          )}
+          재고량 {stock}
+        </Tag>
       </TagContainer>
 
       <Content>

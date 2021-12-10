@@ -10,46 +10,9 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-const Label = styled.label`
-  width: 100px;
-  border-radius: 20px;
-  padding: 0.5rem 0.7rem;
-  border: 2px solid #dddddd;
-  color: #979797;
-  background-color: #ffffff;
-  text-align: center;
-`;
-
-const SortButton = styled.input`
-  display: none;
-  border: 2px solid #0023eb;
-  color: #ffffff;
-  background-color: #0023eb;
-
-  &:checked + label {
-    width: 100px;
-    border-radius: 20px;
-    padding: 0.5rem 0.7rem;
-    border: 2px solid #0023eb;
-    color: #ffffff;
-    background-color: #0023eb;
-  }
-`;
-
 const SearchList = ({ result, setClickItem }) => {
   return (
     <Container>
-      {/* <SortButton
-        id="radio_stock"
-        type="radio"
-        name="sorting"
-        value="stock"
-        defaultChecked
-      />
-      <Label htmlFor="radio_stock">재고량순</Label>
-      <SortButton id="radio_price" type="radio" name="sorting" value="price" />
-      <Label htmlFor="radio_price">가격순</Label> */}
-
       {result.length > 0 ? (
         result.map((item, index) => (
           <SearchListItem

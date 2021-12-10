@@ -13,6 +13,7 @@ const MainContainer = () => {
       price: "1200",
       lat: "37.0767728142858",
       long: "127.132497850726",
+      color: "GREEN",
     },
     {
       id: 2,
@@ -24,6 +25,7 @@ const MainContainer = () => {
       price: "2100",
       lat: "35.5132648703594",
       long: "129.128189636083",
+      color: "RED",
     },
 
     {
@@ -36,6 +38,7 @@ const MainContainer = () => {
       price: "1200",
       lat: "35.7016358",
       long: "128.4349783",
+      color: "YELLOW",
     },
 
     {
@@ -48,6 +51,7 @@ const MainContainer = () => {
       price: "1320",
       lat: "35.5987674397808",
       long: "129.141538944443",
+      color: "GRAY",
     },
   ];
 

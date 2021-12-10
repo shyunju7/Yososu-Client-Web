@@ -58,6 +58,32 @@ const SearchInput = styled.input`
   }
 `;
 
+const SortGroup = styled.div`
+  width: 100%;
+  display: flex;
+  background-color: transparent;
+  justify-content: flex-end;
+  padding-right: 12px;
+`;
+
+const Label = styled.label`
+  padding: 0.3rem;
+  border: 2px solid #f5f5f5;
+  color: #979797;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 4px;
+`;
+
+const SortButton = styled.input`
+  display: none;
+
+  &:checked + label {
+    border: 2px solid #0023eb;
+    color: #0023eb;
+  }
+`;
+
 const Search = ({ showSearch, setClickItem, result }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const onChangeSearch = (event) => {
@@ -77,6 +103,23 @@ const Search = ({ showSearch, setClickItem, result }) => {
         </SearchButton>
       </SearchWrapper>
 
+      <SortGroup>
+        <SortButton
+          id="radio_stock"
+          type="radio"
+          name="sorting"
+          value="stock"
+          defaultChecked
+        />
+        <Label htmlFor="radio_stock">재고량순</Label>
+        <SortButton
+          id="radio_price"
+          type="radio"
+          name="sorting"
+          value="price"
+        />
+        <Label htmlFor="radio_price">가격순</Label>
+      </SortGroup>
       <SearchList result={result} setClickItem={setClickItem} />
     </Container>
   );
