@@ -101,13 +101,19 @@ const Search = ({
     setRadioValue(event.target.value);
   };
 
+  const onKeyPressEnter = (event) => {
+    if (event.key === "Enter") searchLocation(searchTerm);
+    else return;
+  };
+
   return (
     <Container show={showSearch}>
       <SearchWrapper>
         <SearchInput
-          placeholder="지역 이름으로 장소를 검색해보세요!"
+          placeholder="지역 이름으로 장소를 검색해보세요!(ex. 서울/ 경기)"
           onChange={onChangeSearch}
           value={searchTerm}
+          onKeyPress={onKeyPressEnter}
         />
         <SearchButton onClick={() => searchLocation(searchTerm)}>
           <RiSearchLine size="1rem" />
