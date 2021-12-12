@@ -40,26 +40,26 @@ const MapComponent = ({ showSearch, isClickedItem, result }) => {
     const map = new kakao.maps.Map(mapRef.current, mapOptions);
     setKakaoMap(map);
     setMarkers(map);
-  }, [mapRef]);
+  }, [mapRef, result]);
 
-  useEffect(() => {
-    if (kakaoMap === null) return;
-    setMapControl();
-    kakaoMap.relayout();
-  }, [kakaoMap]);
+  // useEffect(() => {
+  //   if (kakaoMap === null) return;
+  //   setMapControl();
+  //   kakaoMap.relayout();
+  // }, [kakaoMap]);
 
-  useEffect(() => {
-    if (kakaoMap === null) return;
-    kakaoMap.relayout();
-  }, [showSearch]);
+  // useEffect(() => {
+  //   if (kakaoMap === null) return;
+  //   kakaoMap.relayout();
+  // }, [showSearch]);
 
-  useEffect(() => {
-    if (kakaoMap === null) return;
+  // useEffect(() => {
+  //   if (kakaoMap === null) return;
 
-    if (isClickedItem.length > 0) {
-      moveToLocation(isClickedItem);
-    }
-  }, [isClickedItem]);
+  //   if (isClickedItem.length > 0) {
+  //     moveToLocation(isClickedItem);
+  //   }
+  // }, [isClickedItem]);
 
   const initializeColorMap = () => {
     colorMarkerMap.set("GREEN", GreenMarker);
@@ -77,25 +77,43 @@ const MapComponent = ({ showSearch, isClickedItem, result }) => {
 
   const setMarkers = (map) => {
     const imageSize = new kakao.maps.Size(24, 35);
-    for (let i = 0; i < result.length; i++) {
-      let marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(result[i].lat, result[i].long),
-        title: result[i].title,
-        image: new kakao.maps.MarkerImage(
-          colorMarkerMap.get(result[i].color),
-          imageSize
-        ),
-      });
 
-      let infoWindow = new kakao.maps.InfoWindow({
-        content: '<div style="padding:5px;">인포윈도우 :D</div>', // 인포윈도우에 표시할 내용
-      });
+    // result.map((item) => {
+    //   let marker = new kakao.maps.Marker({
+    //     map: map,
+    //     position: new kakao.maps.LatLng(
+    //       parseFloat(item.lat),
+    //       parseFloat(item.lng)
+    //     ),
+    //     title: item.name,
+    //     image: new kakao.maps.MarkerImage(
+    //       colorMarkerMap.get(item.color),
+    //       imageSize
+    //     ),
+    //   });
+    if (result.length > 0) {
+      for (let i = 0; i < result.length; i++) {
+        let marker = new kakao.maps.Marker({
+          map: map,
+          position: new kakao.maps.LatLng(
+            parseFloat(result[i].lat),
+            parseFloat(result[i].lng)
+          ),
+          title: result[i].name,
+          image: new kakao.maps.MarkerImage(
+            colorMarkerMap.get(result[i].color),
+            imageSize
+          ),
+        });
 
-      infoWindow.open(kakaoMap, marker);
-      kakao.maps.event.addListener(marker, "click", function () {
-        console.log(`clicked! marker:: `, marker);
-      });
+        let infoWindow = new kakao.maps.InfoWindow({
+          content: '<div style="padding:5px;">인포윈도우 :D</div>', // 인포윈도우에 표시할 내용
+        });
+        infoWindow.open(kakaoMap, marker);
+        kakao.maps.event.addListener(marker, "click", function () {
+          console.log(`clicked! marker:: `, marker);
+        });
+      }
     }
   };
 
