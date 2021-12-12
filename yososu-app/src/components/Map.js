@@ -9,12 +9,26 @@ const Container = styled.div`
   margin: 20px;
   border-radius: 12px;
 `;
+
+const InfoContainer = styled.div`
+  width: 200px;
+  height: 150px;
+  background-color: #ffffff;
+  border: 1px solid #f5f5f5;
+`;
+
 const { kakao } = window;
+
+const content =
+  `<InfoContainer>` +
+  "            카카오 스페이스닷원" +
+  '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
+  '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
+  `</InfoContainer>`;
 
 const MapComponent = ({ showSearch, isClickedItem, result }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
-
   let colorMarkerMap = new Map();
 
   useEffect(() => {
@@ -73,7 +87,15 @@ const MapComponent = ({ showSearch, isClickedItem, result }) => {
           imageSize
         ),
       });
-      kakao.maps.event.addListener(marker, "click", openInfoWindow);
+
+      let infoWindow = new kakao.maps.InfoWindow({
+        content: '<div style="padding:5px;">인포윈도우 :D</div>', // 인포윈도우에 표시할 내용
+      });
+
+      infoWindow.open(kakaoMap, marker);
+      kakao.maps.event.addListener(marker, "click", function () {
+        console.log(`clicked! marker:: `, marker);
+      });
     }
   };
 
@@ -82,18 +104,10 @@ const MapComponent = ({ showSearch, isClickedItem, result }) => {
     geocoder.addressSearch(address, function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        const marker = new kakao.maps.Marker({
-          map: kakaoMap,
-          position: coords,
-        });
         kakaoMap.setCenter(coords);
-        kakaoMap.setLevel(4);
+        kakaoMap.setLevel(3);
       }
     });
-  };
-
-  const openInfoWindow = () => {
-    console.log("click");
   };
 
   return <Container id="map" show={showSearch} ref={mapRef} />;

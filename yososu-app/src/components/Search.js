@@ -84,7 +84,7 @@ const SortButton = styled.input`
   }
 `;
 
-const Search = ({ showSearch, setClickItem, result }) => {
+const Search = ({ showSearch, setClickItem, result, isLoading }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const onChangeSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -120,7 +120,11 @@ const Search = ({ showSearch, setClickItem, result }) => {
         />
         <Label htmlFor="radio_price">가격순</Label>
       </SortGroup>
-      <SearchList result={result} setClickItem={setClickItem} />
+      <SearchList
+        result={result}
+        setClickItem={setClickItem}
+        isLoading={isLoading}
+      />
     </Container>
   );
 };

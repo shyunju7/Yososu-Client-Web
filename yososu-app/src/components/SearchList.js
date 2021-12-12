@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchListItem from "./SearchListItem";
-
+import Loading from "../Loading";
 const Container = styled.div`
   background-color: transparent;
   overflow-y: scroll;
@@ -10,27 +10,41 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-const SearchList = ({ result, setClickItem }) => {
-  return (
+const NoData = styled.span`
+  display: flex;
+  align-content: center;
+  color: #c4c4c4;
+  padding: 12px;
+  text-align: center;
+`;
+
+const SearchList = ({ result, setClickItem, isLoading }) =>
+  isLoading ? (
+    <Loading />
+  ) : (
     <Container>
       {result.length > 0 ? (
-        result.map((item, index) => (
+        result.map((item) => (
           <SearchListItem
-            key={index}
-            title={item.title}
-            operatingTime={item.operatingTime}
-            address={item.address}
-            stock={item.stock}
-            phoneNum={item.phoneNum}
+            key={item.code}
+            title={item.name}
+            operatingTime={item.openTime === null ? "정보 없음" : item.openTime}
+            address={item.addr}
+            stock={item.inventory}
+            phoneNum={item.tel}
             price={item.price}
             setClickItem={setClickItem}
+            lat={item.lat}
+            long={item.lng}
+            color={item.color}
           />
         ))
       ) : (
-        <span> 조회 데이터가 없습니다.</span>
+        <div>
+          <NoData> 조회 데이터가 없습니다.</NoData>
+        </div>
       )}
     </Container>
   );
-};
 
 export default SearchList;
