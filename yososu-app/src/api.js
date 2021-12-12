@@ -5,6 +5,7 @@ const api = axios.create({
 });
 
 export const yososuApi = {
-  getInventoriesInStockOrder: () => api.get("inventories/stock/", {}),
+  getInventoriesInStockOrder: (addr) =>
+    api.get(`inventories/stock/?addr=${addr}`, {}),
   getInventoriesInPriceOrder: () => api.get("/inventories/price/", {}),
 };
