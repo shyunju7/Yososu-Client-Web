@@ -84,10 +84,21 @@ const SortButton = styled.input`
   }
 `;
 
-const Search = ({ showSearch, setClickItem, result, isLoading }) => {
+const Search = ({
+  showSearch,
+  setClickItem,
+  result,
+  isLoading,
+  searchLocation,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const onChangeSearch = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const [radioValue, setRadioValue] = useState("stock");
+  const onChangeRadioBtn = (event) => {
+    setRadioValue(event.target.value);
   };
 
   return (
@@ -98,7 +109,7 @@ const Search = ({ showSearch, setClickItem, result, isLoading }) => {
           onChange={onChangeSearch}
           value={searchTerm}
         />
-        <SearchButton>
+        <SearchButton onClick={() => searchLocation(searchTerm)}>
           <RiSearchLine size="1rem" />
         </SearchButton>
       </SearchWrapper>
@@ -109,6 +120,7 @@ const Search = ({ showSearch, setClickItem, result, isLoading }) => {
           type="radio"
           name="sorting"
           value="stock"
+          onChange={onChangeRadioBtn}
           defaultChecked
         />
         <Label htmlFor="radio_stock">재고량순</Label>
@@ -117,6 +129,7 @@ const Search = ({ showSearch, setClickItem, result, isLoading }) => {
           type="radio"
           name="sorting"
           value="price"
+          onChange={onChangeRadioBtn}
         />
         <Label htmlFor="radio_price">가격순</Label>
       </SortGroup>

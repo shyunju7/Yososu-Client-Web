@@ -3,7 +3,7 @@ import Guide from "../../components/Guide";
 import MapComponent from "../../components/Map";
 import Search from "../../components/Search";
 import { Container, ListButton } from "./styles";
-const MainPresenter = ({ result, isLoading }) => {
+const MainPresenter = ({ result, isLoading, searchLocation }) => {
   const [showSearch, setShowSearch] = useState(true);
   const [isClickedItem, setClickItem] = useState("");
   const [windowSize, setResizewindow] = useState(window.innerWidth);
@@ -31,6 +31,7 @@ const MainPresenter = ({ result, isLoading }) => {
           setClickItem={setClickItem}
           result={result}
           isLoading={isLoading}
+          searchLocation={searchLocation}
         />
       )}
       <MapComponent

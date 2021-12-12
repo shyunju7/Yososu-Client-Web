@@ -23,7 +23,7 @@ const SearchList = ({ result, setClickItem, isLoading }) =>
     <Loading />
   ) : (
     <Container>
-      {result.length > 0 ? (
+      {result && result.length > 0 ? (
         result.map((item) => (
           <SearchListItem
             key={item.code}
