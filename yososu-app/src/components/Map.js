@@ -11,7 +11,6 @@ import YellowMarker from "../../src/assets/yellow_marker.png";
 import RedMarker from "../../src/assets/red_marker.png";
 import GrayMarker from "../../src/assets/gray_marker.png";
 import BlueMarker from "../../src/assets/blue_marker.png";
-import Loading from "../Loading";
 
 const Container = styled.div`
   width: 740px;

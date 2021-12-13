@@ -20,7 +20,7 @@ const SearchWrapper = styled.div`
   background-color: transparent;
   display: flex;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 `;
 
 const SearchButton = styled.button`
@@ -64,6 +64,7 @@ const SortGroup = styled.div`
   background-color: transparent;
   justify-content: flex-end;
   padding-right: 12px;
+  margin-top: 16px;
 `;
 
 const Label = styled.label`
@@ -82,6 +83,15 @@ const SortButton = styled.input`
     border: 2px solid #0023eb;
     color: #0023eb;
   }
+`;
+
+const Guide = styled.div`
+  width: 65%;
+  color: #c4c4c4;
+  font-size: 0.55rem;
+  text-align: start;
+  align-self: center;
+  margin-right: 56px;
 `;
 
 const Search = ({
@@ -121,6 +131,9 @@ const Search = ({
       </SearchWrapper>
 
       <SortGroup>
+        <Guide>
+          * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후, 방문바랍니다.
+        </Guide>
         <SortButton
           id="radio_stock"
           type="radio"

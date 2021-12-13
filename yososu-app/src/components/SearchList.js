@@ -7,7 +7,7 @@ const Container = styled.div`
   display: grid;
   gap: 2px 12px;
   grid-template-columns: 1fr 1fr;
-  margin: 24px 0px;
+  margin: 16px 0px;
 `;
 
 const NoData = styled.span`

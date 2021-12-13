@@ -11,16 +11,20 @@ const MainContainer = () => {
   }, []);
 
   const searchLocation = useCallback((searchTerm) => {
-    console.log("stock");
     yososuApi
       .getInventoriesInStockOrder(searchTerm)
       .then((value) => {
         setResult(value.data.data);
+        console.log(`result`, value.data.data);
       })
       .catch(function () {
         console.log(`관리자에게 문의해주세요..`);
       })
-      .finally(setLoading(false));
+      .finally(
+        setTimeout(() => {
+          setLoading(false);
+        }, 300)
+      );
   }, []);
 
   return (
