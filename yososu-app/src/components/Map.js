@@ -11,6 +11,7 @@ import YellowMarker from "../../src/assets/yellow_marker.png";
 import RedMarker from "../../src/assets/red_marker.png";
 import GrayMarker from "../../src/assets/gray_marker.png";
 import BlueMarker from "../../src/assets/blue_marker.png";
+
 const Container = styled.div`
   width: 740px;
   margin: 20px;
@@ -29,6 +30,63 @@ const MapComponent = ({ isClickedItem, result }) => {
     colorMarkerMap.set("GRAY", GrayMarker);
   }, []);
 
+  const handleSetLocInfo = useCallback(
+    (isClickedItem) => {
+      const {
+        lat,
+        long,
+        title,
+        address,
+        phoneNum,
+        operatingTime,
+        stock,
+        price,
+        updateTime,
+      } = isClickedItem;
+      let message =
+        '<div style="position:absolute; bottom : 40px; left: -90px; display: flex; flex-direction: column;' +
+        'padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">' +
+        '<h2 style="font-family: S-CoreDream-6Bold; padding-bottom: 4px; border-bottom : 1px solid #dcdcdc;">' +
+        title +
+        "</h2>" +
+        '<span style="margin-top: 8px; color: #979797;" font-weight: 700;> 가격 ' +
+        '<span style="color : #1A39ED; font-family: S-CoreDream-6Bold; ">' +
+        price +
+        "</span>" +
+        "   재고량 " +
+        '<span style="color : #1A39ED; font-family: S-CoreDream-6Bold; ">' +
+        stock +
+        "</span>" +
+        "</span>" +
+        '<span style="margin-top: 6px;"> ⛽️ ' +
+        address +
+        "</span>" +
+        '<span style="margin-top: 6px;"> 📞 ' +
+        phoneNum +
+        "</span>" +
+        '<span style="margin-top: 6px;"> 🕒 ' +
+        operatingTime +
+        "</span>" +
+        '<span style="margin-top: 6px;" >' +
+        updateTime +
+        "</span>" +
+        "</div>";
+
+      let content = message;
+
+      let customOverlay = new kakao.maps.CustomOverlay({
+        position: new kakao.maps.LatLng(lat, long),
+        content: content,
+        xAnchor: 0.3,
+        yAnchor: 0,
+        zIndex: 3,
+      });
+
+      customOverlay.setMap(kakaoMap);
+    },
+    [kakaoMap]
+  );
+
   // 클릭한 아이템 위치로 카메라 이동
   const handleMoveLocation = useCallback(() => {
     if (isClickedItem.lat !== null && isClickedItem.long !== null) {
@@ -39,8 +97,9 @@ const MapComponent = ({ isClickedItem, result }) => {
 
       kakaoMap.setCenter(clickedLocation);
       kakaoMap.setLevel(3);
+      handleSetLocInfo(isClickedItem);
     }
-  }, [isClickedItem, kakaoMap]);
+  }, [isClickedItem, kakaoMap, handleSetLocInfo]);
 
   // 마커 설정 및 클러스터
   const handleClusterMarker = useCallback(
@@ -102,14 +161,15 @@ const MapComponent = ({ isClickedItem, result }) => {
           position: locPosition,
           image: new kakao.maps.MarkerImage(BlueMarker, imageSize),
         });
+
         let message =
           '<div style="padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">지금 여기에 있어요!</div>'; // 인포윈도우에 표시될 내용입니다
 
-        let iwContent = message; // 인포윈도우에 표시할 내용
+        let content = message;
 
         let customOverlay = new kakao.maps.CustomOverlay({
           position: locPosition,
-          content: iwContent,
+          content: content,
           xAnchor: 0.3,
           yAnchor: 0,
           zIndex: 3,
