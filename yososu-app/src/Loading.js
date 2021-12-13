@@ -10,14 +10,15 @@ const Container = styled.div`
   justify-content: center;
 `;
 const Text = styled.h3`
-  font-family: S-CoreDream-4Regular;
+  font-family: S-CoreDream-6Bold;
   font-size: 1rem;
+  color: #979797;
 `;
 
 const Loading = () => (
   <Container>
     <img src={loadingImage} alt="loadingImage" width="200px" />
-    <Text>Loading...</Text>
+    <Text>요소수 여기서</Text>
   </Container>
 );
 
