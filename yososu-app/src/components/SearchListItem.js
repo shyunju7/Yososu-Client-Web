@@ -23,7 +23,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #3e4958;
   margin: unset;
   margin-bottom: 12px;
@@ -45,11 +45,12 @@ const Tag = styled.span`
 `;
 
 const Content = styled.div`
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   color: #3e4958;
   margin-bottom: 6px;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 const SearchListItem = ({
@@ -60,9 +61,23 @@ const SearchListItem = ({
   stock,
   setClickItem,
   price,
+  lat,
+  long,
+  color,
+  updateTime,
 }) => {
   const onClickItem = () => {
-    setClickItem(address);
+    setClickItem({
+      lat: lat,
+      long: long,
+      title: title,
+      address: address,
+      phoneNum: phoneNum,
+      operatingTime: operatingTime,
+      stock: stock,
+      price: price,
+      updateTime: updateTime,
+    });
   };
 
   return (
