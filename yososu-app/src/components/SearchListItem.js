@@ -63,20 +63,19 @@ const SearchListItem = ({
   price,
   lat,
   long,
-  color,
   updateTime,
 }) => {
   const onClickItem = () => {
     setClickItem({
       lat: lat,
-      long: long,
-      title: title,
-      address: address,
-      phoneNum: phoneNum,
-      operatingTime: operatingTime,
-      stock: stock,
+      lng: long,
+      name: title,
+      addr: address,
+      tel: phoneNum,
+      openTime: operatingTime,
+      inventory: stock,
       price: price,
-      updateTime: updateTime,
+      regDt: updateTime,
     });
   };
 

@@ -32,22 +32,15 @@ const MapComponent = ({ isClickedItem, result }) => {
 
   const handleSetLocInfo = useCallback(
     (isClickedItem) => {
-      const {
-        lat,
-        long,
-        title,
-        address,
-        phoneNum,
-        operatingTime,
-        stock,
-        price,
-        updateTime,
-      } = isClickedItem;
+      const { lat, lng, name, addr, tel, openTime, inventory, price, regDt } =
+        isClickedItem;
+
+      console.log(`clicked `, isClickedItem);
       let message =
-        '<div style="position:absolute; bottom : 40px; left: -90px; display: flex; flex-direction: column;' +
+        '<div style="display: flex; flex-direction: column;' +
         'padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">' +
         '<h2 style="font-family: S-CoreDream-6Bold; padding-bottom: 4px; border-bottom : 1px solid #dcdcdc;">' +
-        title +
+        name +
         "</h2>" +
         '<span style="margin-top: 8px; color: #979797;" font-weight: 700;> 가격 ' +
         '<span style="color : #1A39ED; font-family: S-CoreDream-6Bold; ">' +
@@ -55,30 +48,30 @@ const MapComponent = ({ isClickedItem, result }) => {
         "</span>" +
         "   재고량 " +
         '<span style="color : #1A39ED; font-family: S-CoreDream-6Bold; ">' +
-        stock +
+        inventory +
         "</span>" +
         "</span>" +
         '<span style="margin-top: 6px;"> ⛽️ ' +
-        address +
+        addr +
         "</span>" +
         '<span style="margin-top: 6px;"> 📞 ' +
-        phoneNum +
+        tel +
         "</span>" +
         '<span style="margin-top: 6px;"> 🕒 ' +
-        operatingTime +
+        openTime +
         "</span>" +
         '<span style="margin-top: 6px;" >' +
-        updateTime +
+        regDt +
         "</span>" +
         "</div>";
 
       let content = message;
 
       let customOverlay = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(lat, long),
+        position: new kakao.maps.LatLng(lat, lng),
         content: content,
-        xAnchor: 0.3,
-        yAnchor: 0,
+        xAnchor: 0.5,
+        yAnchor: 1.3,
         zIndex: 3,
       });
 
@@ -89,10 +82,10 @@ const MapComponent = ({ isClickedItem, result }) => {
 
   // 클릭한 아이템 위치로 카메라 이동
   const handleMoveLocation = useCallback(() => {
-    if (isClickedItem.lat !== null && isClickedItem.long !== null) {
+    if (isClickedItem.lat !== null && isClickedItem.lng !== null) {
       let clickedLocation = new kakao.maps.LatLng(
         isClickedItem.lat,
-        isClickedItem.long
+        isClickedItem.lng
       );
 
       kakaoMap.setCenter(clickedLocation);
@@ -128,7 +121,7 @@ const MapComponent = ({ isClickedItem, result }) => {
 
       if (result && result.length > 0) {
         const markers = result.map((item) => {
-          return new kakao.maps.Marker({
+          let marker = new kakao.maps.Marker({
             map: kakaoMap,
             position: new kakao.maps.LatLng(
               parseFloat(item.lat),
@@ -140,11 +133,16 @@ const MapComponent = ({ isClickedItem, result }) => {
               imageSize
             ),
           });
+          // 마커 클릭 이벤트 추가
+          kakao.maps.event.addListener(marker, "click", function () {
+            handleSetLocInfo(item);
+          });
+          return marker;
         });
         handleClusterMarker(markers);
       }
     },
-    [kakaoMap, handleClusterMarker]
+    [kakaoMap, handleClusterMarker, handleSetLocInfo]
   );
 
   const handleGetCurrentLocation = (map) => {
@@ -156,22 +154,22 @@ const MapComponent = ({ isClickedItem, result }) => {
 
         let locPosition = new kakao.maps.LatLng(lat, lon);
 
-        let marker = new kakao.maps.Marker({
+        new kakao.maps.Marker({
           map: map,
           position: locPosition,
           image: new kakao.maps.MarkerImage(BlueMarker, imageSize),
         });
 
         let message =
-          '<div style="padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">지금 여기에 있어요!</div>'; // 인포윈도우에 표시될 내용입니다
+          '<div style="padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">지금 여기에 있어요!</div>';
 
         let content = message;
 
         let customOverlay = new kakao.maps.CustomOverlay({
           position: locPosition,
           content: content,
-          xAnchor: 0.3,
-          yAnchor: 0,
+          xAnchor: 0.5,
+          yAnchor: 2.2,
           zIndex: 3,
         });
 
