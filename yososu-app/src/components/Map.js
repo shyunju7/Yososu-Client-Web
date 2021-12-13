@@ -41,12 +41,17 @@ const MapComponent = ({ isClickedItem, result }) => {
     }
   }, [isClickedItem, kakaoMap]);
 
-  // 마커 설정
+  // 마커 설정 및 클러스터
   const handleSetMarker = useCallback(
     (colorMarkerMap, result) => {
       const imageSize = new kakao.maps.Size(35, 35);
+      let clusterer = new kakao.maps.MarkerClusterer({
+        map: kakaoMap,
+        averageCenter: true,
+        minLevel: 10,
+      });
       if (result && result.length > 0) {
-        result.map((item) => {
+        const markers = result.map((item) => {
           return new kakao.maps.Marker({
             map: kakaoMap,
             position: new kakao.maps.LatLng(
@@ -60,6 +65,8 @@ const MapComponent = ({ isClickedItem, result }) => {
             ),
           });
         });
+
+        clusterer.addMarkers(markers);
       }
     },
     [kakaoMap]
