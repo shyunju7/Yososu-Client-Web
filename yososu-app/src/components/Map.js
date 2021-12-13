@@ -11,6 +11,7 @@ import YellowMarker from "../../src/assets/yellow_marker.png";
 import RedMarker from "../../src/assets/red_marker.png";
 import GrayMarker from "../../src/assets/gray_marker.png";
 import BlueMarker from "../../src/assets/blue_marker.png";
+import Loading from "../Loading";
 
 const Container = styled.div`
   width: 740px;
@@ -20,7 +21,7 @@ const Container = styled.div`
 
 const { kakao } = window;
 
-const MapComponent = ({ isClickedItem, result }) => {
+const MapComponent = ({ isClickedItem, result, searchTerm }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
   const initializeColorMap = useCallback((colorMarkerMap) => {
@@ -35,7 +36,6 @@ const MapComponent = ({ isClickedItem, result }) => {
       const { lat, lng, name, addr, tel, openTime, inventory, price, regDt } =
         isClickedItem;
 
-      console.log(`clicked `, isClickedItem);
       let message =
         '<div style="display: flex; flex-direction: column;' +
         'padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">' +
@@ -62,7 +62,7 @@ const MapComponent = ({ isClickedItem, result }) => {
         "</span>" +
         '<span style="margin-top: 6px;" >' +
         regDt +
-        "</span>" +
+        " 업데이트 </span>" +
         "</div>";
 
       let content = message;
@@ -76,6 +76,10 @@ const MapComponent = ({ isClickedItem, result }) => {
       });
 
       customOverlay.setMap(kakaoMap);
+
+      kakao.maps.event.addListener(kakaoMap, "zoom_changed", function () {
+        customOverlay.setMap(null);
+      });
     },
     [kakaoMap]
   );
@@ -112,6 +116,7 @@ const MapComponent = ({ isClickedItem, result }) => {
         }
       );
     },
+
     [kakaoMap]
   );
 
@@ -195,7 +200,7 @@ const MapComponent = ({ isClickedItem, result }) => {
     const map = new kakao.maps.Map(mapRef.current, mapOptions);
     setKakaoMap(map);
     handleGetCurrentLocation(map);
-  }, [mapRef]);
+  }, [mapRef, result]);
 
   useEffect(() => {
     handleMoveLocation(isClickedItem);
