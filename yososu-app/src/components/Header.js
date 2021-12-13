@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <Container>
       <Title>YOSOSU</Title>
-      <Text>요소수 어디서 사요? 요기서!</Text>
+      <Text>요소수 어디서? 요기서!</Text>
     </Container>
   );
 };

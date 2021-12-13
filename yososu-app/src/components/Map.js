@@ -180,7 +180,7 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
         customOverlay.setMap(map);
 
         map.setCenter(locPosition);
-        map.setLevel(5);
+        map.setLevel(10);
       });
     }
   };

@@ -10,6 +10,7 @@ const MainPresenter = ({
   isLoading,
   searchLocation,
   setRadioValue,
+  radioValue,
 }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [isClickedItem, setClickItem] = useState({ lat: null, long: null });
@@ -28,11 +29,11 @@ const MainPresenter = ({
     <Loading />
   ) : (
     <Container>
-      {windowSize <= 740 && showSearch ? (
+      {/* {windowSize <= 740 && showSearch ? (
         <MobileSearchList result={result} showSearch={showSearch} />
-      ) : null}
+      ) : null} */}
 
-      {windowSize <= 740 ? (
+      {/* {windowSize <= 740 ? (
         <ListButton onClick={() => setShowSearch((prev) => !prev)}>
           목록보기
         </ListButton>
@@ -45,8 +46,19 @@ const MainPresenter = ({
           searchLocation={searchLocation}
           setRadioValue={setRadioValue}
         />
-      )}
-      <MapComponent isClickedItem={isClickedItem} result={result} />
+      )} */}
+
+      <Search
+        showSearch={showSearch}
+        setClickItem={setClickItem}
+        result={result}
+        isLoading={isLoading}
+        searchLocation={searchLocation}
+        setRadioValue={setRadioValue}
+        radioValue={radioValue}
+      />
+
+      {/* <MapComponent isClickedItem={isClickedItem} result={result} /> */}
       <Guide />
     </Container>
   );

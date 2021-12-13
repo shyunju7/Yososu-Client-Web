@@ -101,6 +101,7 @@ const Search = ({
   isLoading,
   searchLocation,
   setRadioValue,
+  radioValue,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const onChangeSearch = (event) => {
@@ -139,6 +140,7 @@ const Search = ({
           type="radio"
           name="sorting"
           value="stock"
+          checked={radioValue === "stock" ? true : false}
           onChange={onChangeRadioBtn}
           defaultChecked
         />
@@ -148,6 +150,7 @@ const Search = ({
           type="radio"
           name="sorting"
           value="price"
+          checked={radioValue === "price" ? true : false}
           onChange={onChangeRadioBtn}
         />
         <Label htmlFor="radio_price">가격순</Label>
