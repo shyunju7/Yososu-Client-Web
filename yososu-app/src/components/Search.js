@@ -10,7 +10,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  visibility: ${(props) => (props.show ? "visible" : "hidden")};
+  visibility: ${(props) => (props.show ? "hidden" : "visible")};
   transition: ${(props) => (props.show ? "0.1s ease-in" : "0.1s ease-in-out")};
 `;
 
@@ -90,13 +90,13 @@ const Search = ({
   result,
   isLoading,
   searchLocation,
+  setRadioValue,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const onChangeSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const [radioValue, setRadioValue] = useState("stock");
   const onChangeRadioBtn = (event) => {
     setRadioValue(event.target.value);
   };
@@ -143,6 +143,7 @@ const Search = ({
         result={result}
         setClickItem={setClickItem}
         isLoading={isLoading}
+        showSearch={showSearch}
       />
     </Container>
   );
