@@ -16,10 +16,19 @@ const Title = styled.h1`
   color: #0023eb;
   margin-left: 38px;
 `;
+
+const Text = styled.span`
+  font-family: S-CoreDream-4Regular;
+  color: #979797;
+  font-size: 0.62rem;
+  margin-left: 8px;
+`;
+
 const Header = () => {
   return (
     <Container>
       <Title>YOSOSU</Title>
+      <Text>요소수 어디서 사요? 요기서!</Text>
     </Container>
   );
 };
