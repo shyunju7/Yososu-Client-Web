@@ -16,88 +16,60 @@ const Container = styled.div`
   border-radius: 12px;
 `;
 
-const InfoContainer = styled.div`
-  width: 200px;
-  height: 150px;
-  background-color: #ffffff;
-  border: 1px solid #f5f5f5;
-`;
-
 const { kakao } = window;
 
-const content =
-  `<InfoContainer>` +
-  "            카카오 스페이스닷원" +
-  '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
-  '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
-  `</InfoContainer>`;
-
-const MapComponent = ({ showSearch, isClickedItem, result }) => {
+const MapComponent = ({ isClickedItem, result }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
-
-  let colorMarkerMap = new Map();
-
-  const setMapControl = useCallback(() => {
-    let mapTypeControl = new kakao.maps.MapTypeControl();
-    let zoomControl = new kakao.maps.ZoomControl();
-    kakaoMap.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-    kakaoMap.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-  }, [kakaoMap]);
-
-  const initializeColorMap = useCallback(() => {
+  const initializeColorMap = useCallback((colorMarkerMap) => {
     colorMarkerMap.set("GREEN", GreenMarker);
     colorMarkerMap.set("YELLOW", YellowMarker);
     colorMarkerMap.set("RED", RedMarker);
     colorMarkerMap.set("GRAY", GrayMarker);
-  }, [colorMarkerMap]);
+  }, []);
 
-  const setMarkers = (map) => {
-    const imageSize = new kakao.maps.Size(35, 35);
+  // 클릭한 아이템 위치로 카메라 이동
+  const handleMoveLocation = useCallback(() => {
+    if (isClickedItem.lat !== null && isClickedItem.long !== null) {
+      let clickedLocation = new kakao.maps.LatLng(
+        isClickedItem.lat,
+        isClickedItem.long
+      );
 
-    if (result.length > 0) {
-      const markers = result.map((item) => {
-        return new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(
-            parseFloat(item.lat),
-            parseFloat(item.lng)
-          ),
-          title: item.name,
-          image: new kakao.maps.MarkerImage(
-            colorMarkerMap.get(item.color),
-            imageSize
-          ),
-        });
-      });
-
-      //clusteringMarker(markers);
+      kakaoMap.setCenter(clickedLocation);
+      kakaoMap.setLevel(3);
     }
-  };
+  }, [isClickedItem, kakaoMap]);
 
-  const clusteringMarker = (markers) => {
-    const clusterer = new kakao.maps.MarkerClusterer({
-      map: kakaoMap,
-      averageCenter: true,
-      minLevel: 10,
-    });
-    clusterer.addMarkers(markers);
-  };
-
-  const moveToLocation = (address) => {
-    const geocoder = new kakao.maps.services.Geocoder();
-    geocoder.addressSearch(address, function (result, status) {
-      if (status === kakao.maps.services.Status.OK) {
-        const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        kakaoMap.setCenter(coords);
-        kakaoMap.setLevel(3);
+  // 마커 설정
+  const handleSetMarker = useCallback(
+    (colorMarkerMap, result) => {
+      const imageSize = new kakao.maps.Size(35, 35);
+      if (result && result.length > 0) {
+        result.map((item) => {
+          return new kakao.maps.Marker({
+            map: kakaoMap,
+            position: new kakao.maps.LatLng(
+              parseFloat(item.lat),
+              parseFloat(item.lng)
+            ),
+            title: item.name,
+            image: new kakao.maps.MarkerImage(
+              colorMarkerMap.get(item.color),
+              imageSize
+            ),
+          });
+        });
       }
-    });
-  };
+    },
+    [kakaoMap]
+  );
 
-  useEffect(() => {
-    initializeColorMap();
-  });
+  useMemo(() => {
+    let colorMarkerMap = new Map();
+    initializeColorMap(colorMarkerMap);
+    handleSetMarker(colorMarkerMap, result);
+  }, [initializeColorMap, handleSetMarker, result]);
 
   useEffect(() => {
     const mapOptions = {
@@ -106,29 +78,13 @@ const MapComponent = ({ showSearch, isClickedItem, result }) => {
     };
     const map = new kakao.maps.Map(mapRef.current, mapOptions);
     setKakaoMap(map);
-    setMarkers(map);
-  }, [mapRef, result]);
+  }, [mapRef]);
 
   useEffect(() => {
-    if (kakaoMap === null) return;
-    setMapControl();
-    kakaoMap.relayout();
-  }, [kakaoMap, setMapControl]);
+    handleMoveLocation(isClickedItem);
+  }, [handleMoveLocation, isClickedItem]);
 
-  useEffect(() => {
-    if (kakaoMap === null) return;
-    kakaoMap.relayout();
-  }, [showSearch]);
-
-  useEffect(() => {
-    if (kakaoMap === null) return;
-
-    if (isClickedItem.length > 0) {
-      moveToLocation(isClickedItem);
-    }
-  }, [isClickedItem]);
-
-  return <Container id="map" show={showSearch} ref={mapRef} />;
+  return <Container id="map" ref={mapRef} />;
 };
 
 export default MapComponent;
