@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SearchListItem from "./SearchListItem";
 const Container = styled.div`
+  width: 100%;
   background-color: transparent;
   overflow-y: scroll;
   display: grid;
@@ -11,11 +12,14 @@ const Container = styled.div`
 `;
 
 const NoData = styled.span`
+  width: 200%;
+  height: 50vh;
   display: flex;
-  align-content: center;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
   color: #c4c4c4;
   padding: 12px;
-  text-align: center;
 `;
 
 const SearchList = ({ result, setClickItem }) => (
@@ -38,9 +42,7 @@ const SearchList = ({ result, setClickItem }) => (
         />
       ))
     ) : (
-      <div>
-        <NoData> 조회 데이터가 없습니다.</NoData>
-      </div>
+      <NoData> 조회 데이터가 없습니다.</NoData>
     )}
   </Container>
 );

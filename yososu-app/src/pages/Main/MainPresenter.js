@@ -27,9 +27,7 @@ const MainPresenter = ({ result, isLoading, searchLocation, error }) => {
         <MobileSearchList result={result} showSearch={showSearch} />
       ) : null}
       {windowSize <= 740 ? (
-        <ListButton onClick={() => setShowSearch((prev) => !prev)}>
-          목록보기
-        </ListButton>
+        <ListButton>목록보기</ListButton>
       ) : (
         <Search
           showSearch={showSearch}

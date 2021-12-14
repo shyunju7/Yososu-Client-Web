@@ -28,7 +28,7 @@ const NoData = styled.span`
   text-align: center;
 `;
 
-const MobileSearchList = ({ result, setClickItem, showSearch }) => {
+const MobileSearchList = ({ result, setClickItem }) => {
   return (
     <Container>
       {result && result.length > 0 ? (

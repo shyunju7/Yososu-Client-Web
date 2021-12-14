@@ -38,6 +38,7 @@ const SelectBox = styled.select`
   border: 2px solid #f4f4f4;
   color: #979797;
   font-family: S-CoreDream-6Bold;
+  margin-top: 16px;
   padding: 10px 20px;
 
   &:focus {
