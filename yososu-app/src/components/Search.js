@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { RiSearchLine } from "react-icons/ri";
 import SearchList from "./SearchList";
 const Container = styled.div`
   width: calc(100vw - 740px);
@@ -23,41 +22,6 @@ const SearchWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-const SearchButton = styled.button`
-  position: absolute;
-  border: none;
-  background-color: transparent;
-  color: #c4c4c4;
-  width: 1rem;
-  height: 1rem;
-  top: 50%;
-  right: 8%;
-  cursor: pointer;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  height: 52px;
-  padding: 0.5rem;
-  margin: auto 32px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  border: 1px solid #f5f5f5;
-  font-family: S-CoreDream-3Light;
-  margin-top: 1rem;
-  font-size: 0.7rem;
-  color: #303030;
-
-  &::placeholder {
-    color: #c4c4c4;
-  }
-
-  &:focus {
-    outline: none;
-    border: 2px solid #ccd3fb;
-  }
-`;
-
 const Guide = styled.div`
   width: 100%;
   margin-left: 64px;
@@ -68,13 +32,13 @@ const Guide = styled.div`
 `;
 
 const SelectBox = styled.select`
-  width: 80%;
-  padding: 10px;
-  border-radius: 12px;
+  width: 90%;
+  height: 60px;
+  border-radius: 8px;
   border: 2px solid #f4f4f4;
-  margin-top: 24px;
   color: #979797;
   font-family: S-CoreDream-6Bold;
+  padding: 10px 20px;
 
   &:focus {
     outline: none;

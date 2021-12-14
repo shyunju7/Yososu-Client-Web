@@ -5,13 +5,7 @@ import MobileSearchList from "../../components/MobileSearchList";
 import Search from "../../components/Search";
 import Loading from "../../Loading";
 import { Container, ListButton } from "./styles";
-const MainPresenter = ({
-  result,
-  isLoading,
-  searchLocation,
-  setRadioValue,
-  radioValue,
-}) => {
+const MainPresenter = ({ result, isLoading, searchLocation, error }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [isClickedItem, setClickItem] = useState({ lat: null, long: null });
   const [windowSize, setResizeWindow] = useState(window.innerWidth);
@@ -29,11 +23,10 @@ const MainPresenter = ({
     <Loading />
   ) : (
     <Container>
-      {/* {windowSize <= 740 && showSearch ? (
+      {windowSize <= 740 && showSearch ? (
         <MobileSearchList result={result} showSearch={showSearch} />
-      ) : null} */}
-
-      {/* {windowSize <= 740 ? (
+      ) : null}
+      {windowSize <= 740 ? (
         <ListButton onClick={() => setShowSearch((prev) => !prev)}>
           목록보기
         </ListButton>
@@ -44,21 +37,13 @@ const MainPresenter = ({
           result={result}
           isLoading={isLoading}
           searchLocation={searchLocation}
-          setRadioValue={setRadioValue}
         />
-      )} */}
-
-      <Search
-        showSearch={showSearch}
-        setClickItem={setClickItem}
+      )}
+      <MapComponent
+        isClickedItem={isClickedItem}
         result={result}
-        isLoading={isLoading}
         searchLocation={searchLocation}
-        setRadioValue={setRadioValue}
-        radioValue={radioValue}
       />
-
-      {/* <MapComponent isClickedItem={isClickedItem} result={result} /> */}
       <Guide />
     </Container>
   );
