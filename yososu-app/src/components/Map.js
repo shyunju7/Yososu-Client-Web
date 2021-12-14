@@ -20,9 +20,14 @@ const Container = styled.div`
 
 const { kakao } = window;
 
-const MapComponent = ({ isClickedItem, result, searchTerm }) => {
+const MapComponent = ({ isClickedItem, result, searchLocation }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
+  let clusterer = new kakao.maps.MarkerClusterer({
+    map: kakaoMap,
+    averageCenter: true,
+    minLevel: 8,
+  });
   const initializeColorMap = useCallback((colorMarkerMap) => {
     colorMarkerMap.set("GREEN", GreenMarker);
     colorMarkerMap.set("YELLOW", YellowMarker);
@@ -85,14 +90,14 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
 
   // 클릭한 아이템 위치로 카메라 이동
   const handleMoveLocation = useCallback(() => {
+    let clickedLocation;
     if (isClickedItem.lat !== null && isClickedItem.lng !== null) {
-      let clickedLocation = new kakao.maps.LatLng(
+      clickedLocation = new kakao.maps.LatLng(
         isClickedItem.lat,
         isClickedItem.lng
       );
-
-      kakaoMap.setCenter(clickedLocation);
       kakaoMap.setLevel(3);
+      kakaoMap.setCenter(clickedLocation);
       handleSetLocInfo(isClickedItem);
     }
   }, [isClickedItem, kakaoMap, handleSetLocInfo]);
@@ -100,12 +105,9 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
   // 마커 설정 및 클러스터
   const handleClusterMarker = useCallback(
     (markers) => {
-      let clusterer = new kakao.maps.MarkerClusterer({
-        map: kakaoMap,
-        averageCenter: true,
-        minLevel: 8,
-      });
       clusterer.addMarkers(markers);
+      clusterer.setAverageCenter(true);
+
       kakao.maps.event.addListener(
         clusterer,
         "clusterclick",
@@ -121,6 +123,7 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
 
   const handleSetMarker = useCallback(
     (colorMarkerMap, result) => {
+      clusterer.clear();
       const imageSize = new kakao.maps.Size(35, 35);
 
       if (result && result.length > 0) {
@@ -141,8 +144,10 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
           kakao.maps.event.addListener(marker, "click", function () {
             handleSetLocInfo(item);
           });
+
           return marker;
         });
+
         handleClusterMarker(markers);
       }
     },
@@ -178,9 +183,7 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
         });
 
         customOverlay.setMap(map);
-
         map.setCenter(locPosition);
-        map.setLevel(10);
       });
     }
   };
@@ -199,11 +202,20 @@ const MapComponent = ({ isClickedItem, result, searchTerm }) => {
     const map = new kakao.maps.Map(mapRef.current, mapOptions);
     setKakaoMap(map);
     handleGetCurrentLocation(map);
-  }, [mapRef, result]);
+  }, [mapRef]);
 
   useEffect(() => {
     handleMoveLocation(isClickedItem);
   }, [handleMoveLocation, isClickedItem]);
+
+  useEffect(() => {
+    if (kakaoMap !== null) {
+      kakaoMap.setCenter(
+        new kakao.maps.LatLng(35.845968406219406, 127.134250293995)
+      );
+      kakaoMap.setLevel(13);
+    }
+  }, [kakaoMap, result]);
 
   return <Container id="map" ref={mapRef} />;
 };
