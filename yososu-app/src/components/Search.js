@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { RiSearchLine } from "react-icons/ri";
 import SearchList from "./SearchList";
@@ -58,40 +58,28 @@ const SearchInput = styled.input`
   }
 `;
 
-const SortGroup = styled.div`
-  width: 100%;
-  display: flex;
-  background-color: transparent;
-  justify-content: flex-end;
-  padding-right: 12px;
-  margin-top: 16px;
-`;
-
-const Label = styled.label`
-  padding: 0.3rem;
-  border: 2px solid #f5f5f5;
-  color: #979797;
-  background-color: #ffffff;
-  text-align: center;
-  border-radius: 4px;
-`;
-
-const SortButton = styled.input`
-  display: none;
-
-  &:checked + label {
-    border: 2px solid #0023eb;
-    color: #0023eb;
-  }
-`;
-
 const Guide = styled.div`
-  width: 65%;
+  width: 100%;
+  margin-left: 64px;
   color: #c4c4c4;
   font-size: 0.55rem;
   text-align: start;
   align-self: center;
-  margin-right: 56px;
+`;
+
+const SelectBox = styled.select`
+  width: 80%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #f4f4f4;
+  margin-top: 24px;
+  color: #979797;
+  font-family: S-CoreDream-6Bold;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #ccd3fb;
+  }
 `;
 
 const Search = ({
@@ -100,61 +88,44 @@ const Search = ({
   result,
   isLoading,
   searchLocation,
-  setRadioValue,
-  radioValue,
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const onChangeSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const [optionValue, setOptionValue] = useState("강원");
 
-  const onChangeRadioBtn = (event) => {
-    setRadioValue(event.target.value);
-  };
-
-  const onKeyPressEnter = (event) => {
-    if (event.key === "Enter") searchLocation(searchTerm);
-    else return;
+  const changeLocation = (e) => {
+    setOptionValue(e.target.value);
+    searchLocation(e.target.value);
+    console.log(optionValue);
   };
 
   return (
     <Container show={showSearch}>
       <SearchWrapper>
-        <SearchInput
-          placeholder="지역 이름으로 장소를 검색해보세요!(ex. 서울/ 경기)"
-          onChange={onChangeSearch}
-          value={searchTerm}
-          onKeyPress={onKeyPressEnter}
-        />
-        <SearchButton onClick={() => searchLocation(searchTerm)}>
-          <RiSearchLine size="1rem" />
-        </SearchButton>
+        <SelectBox onChange={changeLocation} value={optionValue}>
+          <option value="강원" defaultChecked>
+            강원도
+          </option>
+          <option value="경기">경기도</option>
+          <option value="경남">경상남도</option>
+          <option value="경북">경상북도</option>
+          <option value="대구">대구광역시</option>
+          <option value="대전">대전광역시</option>
+          <option value="부산">부산광역시</option>
+          <option value="서울">서울특별시</option>
+          <option value="세종">세종자치시</option>
+          <option value="울산">울산광역시</option>
+          <option value="인천">인천광역시</option>
+          <option value="전남">전라남도</option>
+          <option value="전북">전라북도</option>
+          <option value="제주">제주특별자치도</option>
+          <option value="충남">충청남도</option>
+          <option value="충북">충청북도</option>
+        </SelectBox>
       </SearchWrapper>
 
-      <SortGroup>
-        <Guide>
-          * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후, 방문바랍니다.
-        </Guide>
-        <SortButton
-          id="radio_stock"
-          type="radio"
-          name="sorting"
-          value="stock"
-          checked={radioValue === "stock" ? true : false}
-          onChange={onChangeRadioBtn}
-          defaultChecked
-        />
-        <Label htmlFor="radio_stock">재고량순</Label>
-        <SortButton
-          id="radio_price"
-          type="radio"
-          name="sorting"
-          value="price"
-          checked={radioValue === "price" ? true : false}
-          onChange={onChangeRadioBtn}
-        />
-        <Label htmlFor="radio_price">가격순</Label>
-      </SortGroup>
+      <Guide>
+        * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후, 방문바랍니다.
+      </Guide>
+
       <SearchList
         result={result}
         setClickItem={setClickItem}
