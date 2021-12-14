@@ -128,24 +128,25 @@ const MapComponent = ({ isClickedItem, result, searchLocation }) => {
 
       if (result && result.length > 0) {
         const markers = result.map((item) => {
-          let marker = new kakao.maps.Marker({
-            map: kakaoMap,
-            position: new kakao.maps.LatLng(
-              parseFloat(item.lat),
-              parseFloat(item.lng)
-            ),
-            title: item.name,
-            image: new kakao.maps.MarkerImage(
-              colorMarkerMap.get(item.color),
-              imageSize
-            ),
-          });
-          // 마커 클릭 이벤트 추가
-          kakao.maps.event.addListener(marker, "click", function () {
-            handleSetLocInfo(item);
-          });
-
-          return marker;
+          if (!isNaN(item.lat)) {
+            let marker = new kakao.maps.Marker({
+              map: kakaoMap,
+              position: new kakao.maps.LatLng(
+                parseFloat(item.lat),
+                parseFloat(item.lng)
+              ),
+              title: item.name,
+              image: new kakao.maps.MarkerImage(
+                colorMarkerMap.get(item.color),
+                imageSize
+              ),
+            });
+            // 마커 클릭 이벤트 추가
+            kakao.maps.event.addListener(marker, "click", function () {
+              handleSetLocInfo(item);
+            });
+            return marker;
+          }
         });
 
         handleClusterMarker(markers);
