@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.js": "/yososu-client-web/static/js/main.32d4c280.chunk.js",
-    "main.js.map": "/yososu-client-web/static/js/main.32d4c280.chunk.js.map",
-    "runtime-main.js": "/yososu-client-web/static/js/runtime-main.bf6f77d8.js",
-    "runtime-main.js.map": "/yososu-client-web/static/js/runtime-main.bf6f77d8.js.map",
-    "static/css/2.0a9ec390.chunk.css": "/yososu-client-web/static/css/2.0a9ec390.chunk.css",
-    "static/js/2.2b65fc8c.chunk.js": "/yososu-client-web/static/js/2.2b65fc8c.chunk.js",
-    "static/js/2.2b65fc8c.chunk.js.map": "/yososu-client-web/static/js/2.2b65fc8c.chunk.js.map",
-    "index.html": "/yososu-client-web/index.html",
-    "static/css/2.0a9ec390.chunk.css.map": "/yososu-client-web/static/css/2.0a9ec390.chunk.css.map",
-    "static/js/2.2b65fc8c.chunk.js.LICENSE.txt": "/yososu-client-web/static/js/2.2b65fc8c.chunk.js.LICENSE.txt",
-    "static/media/blue_marker.599f22dc.png": "/yososu-client-web/static/media/blue_marker.599f22dc.png",
-    "static/media/gray_marker.3a645319.png": "/yososu-client-web/static/media/gray_marker.3a645319.png",
-    "static/media/green_marker.2fb5b0d5.png": "/yososu-client-web/static/media/green_marker.2fb5b0d5.png",
-    "static/media/loading_img.f2fddeb4.gif": "/yososu-client-web/static/media/loading_img.f2fddeb4.gif",
-    "static/media/red_marker.94c6cbc0.png": "/yososu-client-web/static/media/red_marker.94c6cbc0.png",
-    "static/media/yellow_marker.873f8f97.png": "/yososu-client-web/static/media/yellow_marker.873f8f97.png"
+    "main.js": "/yososu-client-web/index.html/static/js/main.32d4c280.chunk.js",
+    "main.js.map": "/yososu-client-web/index.html/static/js/main.32d4c280.chunk.js.map",
+    "runtime-main.js": "/yososu-client-web/index.html/static/js/runtime-main.5826bf8f.js",
+    "runtime-main.js.map": "/yososu-client-web/index.html/static/js/runtime-main.5826bf8f.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/yososu-client-web/index.html/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.2cdfca80.chunk.js": "/yososu-client-web/index.html/static/js/2.2cdfca80.chunk.js",
+    "static/js/2.2cdfca80.chunk.js.map": "/yososu-client-web/index.html/static/js/2.2cdfca80.chunk.js.map",
+    "index.html": "/yososu-client-web/index.html/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/yososu-client-web/index.html/static/css/2.0a9ec390.chunk.css.map",
+    "static/js/2.2cdfca80.chunk.js.LICENSE.txt": "/yososu-client-web/index.html/static/js/2.2cdfca80.chunk.js.LICENSE.txt",
+    "static/media/blue_marker.599f22dc.png": "/yososu-client-web/index.html/static/media/blue_marker.599f22dc.png",
+    "static/media/gray_marker.3a645319.png": "/yososu-client-web/index.html/static/media/gray_marker.3a645319.png",
+    "static/media/green_marker.2fb5b0d5.png": "/yososu-client-web/index.html/static/media/green_marker.2fb5b0d5.png",
+    "static/media/loading_img.f2fddeb4.gif": "/yososu-client-web/index.html/static/media/loading_img.f2fddeb4.gif",
+    "static/media/red_marker.94c6cbc0.png": "/yososu-client-web/index.html/static/media/red_marker.94c6cbc0.png",
+    "static/media/yellow_marker.873f8f97.png": "/yososu-client-web/index.html/static/media/yellow_marker.873f8f97.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.bf6f77d8.js",
+    "static/js/runtime-main.5826bf8f.js",
     "static/css/2.0a9ec390.chunk.css",
-    "static/js/2.2b65fc8c.chunk.js",
+    "static/js/2.2cdfca80.chunk.js",
     "static/js/main.32d4c280.chunk.js"
   ]
 }
