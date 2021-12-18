@@ -18,7 +18,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006713",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -31,7 +31,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006714",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -44,7 +44,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006715",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -57,7 +57,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006716",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -70,7 +70,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006717",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -83,7 +83,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006718",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -96,7 +96,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006719",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -109,7 +109,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006710",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -122,7 +122,7 @@ const testData = [
   },
   {
     addr: "경기 가평군 청평면 경춘로 113",
-    code: "A0006712",
+    code: "A0006711",
     inventory: "2000",
     lat: "37.68621310",
     lng: "127.37913190",
@@ -136,34 +136,32 @@ const testData = [
 ];
 
 const MainContainer = () => {
-  const [result, setResult] = useState(testData);
+  const [result, setResult] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const searchLocation =
-    //useCallback(
+  const searchLocation = useCallback(
     (searchTerm) => {
-      console.log("tt");
-      // yososuApi
-      //   .getInventoriesInStockOrder(searchTerm)
-      //   .then((value) => {
-      //     //setResult(value.data.data);
-      //   })
-      //   .catch(function () {
-      //     setError("API 통신 오류 - 관리자에게 문의해주세요:)");
-      //   })
-      //   .finally(
-      //     setTimeout(() => {
-      //       setLoading(false);
-      //     }, 500)
-      //   );
-    };
-  //[setResult]
-  // );
+      yososuApi
+        .getInventoriesInStockOrder(searchTerm)
+        .then((value) => {
+          setResult(value.data.data);
+        })
+        .catch(function () {
+          setError("API 통신 오류 - 관리자에게 문의해주세요:)");
+        })
+        .finally(
+          setTimeout(() => {
+            setLoading(false);
+          }, 500)
+        );
+    },
+    [setResult]
+  );
 
-  // useEffect(() => {
-  //   setResult([]);
-  //   searchLocation("강원");
-  // }, [searchLocation]);
+  useEffect(() => {
+    setResult([]);
+    searchLocation("강원");
+  }, [searchLocation]);
 
   return (
     <MainPresenter

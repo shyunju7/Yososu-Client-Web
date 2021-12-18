@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import CustomSelect from "./CustomSelect";
 import SearchList from "./SearchList";
 const Container = styled.div`
   width: 45%;
@@ -33,15 +34,16 @@ const Guide = styled.div`
 `;
 
 const SelectBox = styled.select`
-  width: 90%;
-  height: 60px;
-  border-radius: 8px;
-  border: 2px solid #f4f4f4;
-  color: #979797;
-  font-family: S-CoreDream-6Bold;
-  margin-top: 16px;
-  padding: 10px 20px;
+  &:-ms-expand {
+    display: none;
+  }
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
+  width: 200px;
+  padding: 10px;
   &:focus {
     outline: none;
     border: 2px solid #ccd3fb;
@@ -55,37 +57,15 @@ const Search = ({
   isLoading,
   searchLocation,
 }) => {
-  const [optionValue, setOptionValue] = useState("강원");
-
-  const changeLocation = (e) => {
-    setOptionValue(e.target.value);
-    searchLocation(e.target.value);
-    console.log(optionValue);
+  const changeLocation = (optionItem) => {
+    console.log(optionItem);
+    searchLocation(optionItem);
   };
 
   return (
     <Container show={showSearch}>
       <SearchWrapper>
-        <SelectBox onChange={changeLocation} value={optionValue}>
-          <option value="강원" defaultChecked>
-            강원도
-          </option>
-          <option value="경기">경기도</option>
-          <option value="경남">경상남도</option>
-          <option value="경북">경상북도</option>
-          <option value="대구">대구광역시</option>
-          <option value="대전">대전광역시</option>
-          <option value="부산">부산광역시</option>
-          <option value="서울">서울특별시</option>
-          <option value="세종">세종자치시</option>
-          <option value="울산">울산광역시</option>
-          <option value="인천">인천광역시</option>
-          <option value="전남">전라남도</option>
-          <option value="전북">전라북도</option>
-          <option value="제주">제주특별자치도</option>
-          <option value="충남">충청남도</option>
-          <option value="충북">충청북도</option>
-        </SelectBox>
+        <CustomSelect changeLocation={changeLocation} />
       </SearchWrapper>
 
       <Guide>
