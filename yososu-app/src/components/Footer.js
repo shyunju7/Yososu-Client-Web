@@ -1,25 +1,36 @@
 import React from "react";
 import styled from "styled-components";
-
+import { RiGithubFill } from "react-icons/ri";
+import { SiGmail } from "react-icons/si";
+import { ImWordpress } from "react-icons/im";
 const Container = styled.footer`
   width: 100%;
   height: 200px;
   background-color: #e5e9fd;
   padding: 10px 20px;
   position: relative;
+  display: flex;
+  flex-direction: row;
 `;
 
-const Title = styled.h2`
+const Title = styled.span`
   font-size: 1rem;
-  font-weight: 700;
-  font-family: S-CoreDream-8Heavy;
-  color: #0023eb;
+  font-family: S-CoreDream-6Bold;
+  color: #667bf3;
   margin-top: 12px;
+`;
+
+const Tag = styled.div`
+  font-family: S-CoreDream-6Bold;
+  color: #979797;
+  margin-bottom: 12px;
 `;
 
 const Contents = styled.div`
+  width: 50%;
   margin-top: 12px;
   color: #979797;
+  line-height: 20px;
 `;
 
 const Guide = styled.div`
@@ -42,20 +53,32 @@ const CopyRight = styled.h3`
 
 const Footer = () => (
   <Container>
-    <Title>YOSOSU</Title>
     <Contents>
-      <Guide>
-        * 요소수 요기서에 모든 정보는 환경부의 공공 데이터를 활용하였습니다:)
-      </Guide>
-      <Guide>
-        * 공개되는 요소수 가격은 기본적으로 벌크 요소수 가격이며, 페트 요소수
-        가격은 표시된 가격과 다를 수 있습니다.
-      </Guide>
-      <Guide>
-        * 벌크 요소수가 매진 되었을 경우, 페트 요소수 가격으로 업데이트 됩니다.
-      </Guide>
+      <Title>요소수 여기서</Title>는 요소수가 필요한 모든 분들께 <br />
+      요소수 판매처 위치와 재고량 등의 정보를 쉽고 빠르게 제공하는 서비스입니다.
     </Contents>
-    <CopyRight>&copy; {new Date().getFullYear()}Team-Whooper</CopyRight>
+    <Contents>
+      <Tag>Developer & Contact</Tag>
+      <address>
+        Front-end 송현주{" "}
+        <a href="https://github.com/shyunju7" target="_blank" rel="noreferrer">
+          <RiGithubFill size="1rem" color="black" />
+        </a>{" "}
+        <a href="mailto:songthdo427@gmail.com">
+          <SiGmail color="red" size="0.8rem" />
+        </a>
+      </address>
+
+      <address>
+        Back-end 이다은{" "}
+        <a href="https://github.com/eleeje97" target="_blank" rel="noreferrer">
+          <RiGithubFill size="1rem" color="black" />
+        </a>{" "}
+        <a href="mailto:eleeje97@gmail.com">
+          <SiGmail color="red" size="0.8rem" />
+        </a>
+      </address>
+    </Contents>
   </Container>
 );
 export default Footer;
