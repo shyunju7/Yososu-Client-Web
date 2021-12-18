@@ -29,6 +29,7 @@ const Guide = styled.div`
   font-size: 0.55rem;
   text-align: start;
   align-self: center;
+  line-height: 18px;
 `;
 
 const SelectBox = styled.select`
@@ -88,7 +89,12 @@ const Search = ({
       </SearchWrapper>
 
       <Guide>
-        * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후, 방문바랍니다.
+        * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후, 방문바랍니다.{" "}
+        <br />
+        * 요소수 가격은 기본적으로 벌크 요소수 가격이며, 페트 요소수 가격은
+        표시된 가격과 다를 수 있습니다.
+        <br />* 벌크 요소수가 매진 되었을 경우,페트 요소수 가격으로 업데이트
+        됩니다.
       </Guide>
 
       <SearchList

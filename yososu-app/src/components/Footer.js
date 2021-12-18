@@ -38,7 +38,6 @@ const Guide = styled.div`
   color: #c4c4c4;
   font-size: 0.55rem;
   text-align: start;
-  margin-bottom: 4px;
 `;
 
 const CopyRight = styled.h3`
@@ -56,6 +55,9 @@ const Footer = () => (
     <Contents>
       <Title>요소수 여기서</Title>는 요소수가 필요한 모든 분들께 <br />
       요소수 판매처 위치와 재고량 등의 정보를 쉽고 빠르게 제공하는 서비스입니다.
+      <Guide>
+        * 요소수 요기서에 모든 정보는 환경부의 공공 데이터를 활용하였습니다:)
+      </Guide>
     </Contents>
     <Contents>
       <Tag>Developer & Contact</Tag>
