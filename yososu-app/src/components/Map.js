@@ -13,7 +13,7 @@ import GrayMarker from "../../src/assets/gray_marker.png";
 import BlueMarker from "../../src/assets/blue_marker.png";
 
 const Container = styled.div`
-  width: calc(100vw - 740px);
+  width: calc(100vw - 45%);
   margin: 20px;
   border-radius: 12px;
 `;

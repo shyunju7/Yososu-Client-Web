@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import SearchList from "./SearchList";
 const Container = styled.div`
-  width: 740px;
+  width: 45%;
   height: 100%;
   background-color: #ffffff;
   border-right: 1px solid #f5f5f5;
