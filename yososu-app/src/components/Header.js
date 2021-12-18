@@ -27,7 +27,7 @@ const Text = styled.span`
 const Header = () => {
   return (
     <Container>
-      <Title>YOSOSU</Title>
+      <Title>요소수 요기서</Title>
       <Text> - 요소수 어디서? 요기서!</Text>
     </Container>
   );
