@@ -4,7 +4,7 @@ import SearchListItem from "./SearchListItem";
 const Container = styled.div`
   width: 100%;
   background-color: transparent;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: grid;
   gap: 2px 12px;
   grid-template-columns: 1fr 1fr;
