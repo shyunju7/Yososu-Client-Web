@@ -13,14 +13,15 @@ import GrayMarker from "../../src/assets/gray_marker.png";
 import BlueMarker from "../../src/assets/blue_marker.png";
 
 const Container = styled.div`
-  width: calc(100vw - 45%);
+  width: ${(props) =>
+    props.windowSize <= 740 ? "100vw" : "calc(100vw - 40%)"};
   margin: 20px;
   border-radius: 12px;
 `;
 
 const { kakao } = window;
 
-const MapComponent = ({ isClickedItem, result, searchLocation }) => {
+const MapComponent = ({ isClickedItem, result, windowSize }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
   let clusterer = new kakao.maps.MarkerClusterer({
@@ -218,7 +219,7 @@ const MapComponent = ({ isClickedItem, result, searchLocation }) => {
     }
   }, [kakaoMap, result]);
 
-  return <Container id="map" ref={mapRef} />;
+  return <Container id="map" ref={mapRef} windowSize={windowSize} />;
 };
 
 export default MapComponent;

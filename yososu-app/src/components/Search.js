@@ -3,15 +3,16 @@ import styled from "styled-components";
 import CustomSelect from "./CustomSelect";
 import SearchList from "./SearchList";
 const Container = styled.div`
-  width: 45%;
+  width: ${(props) => (props.windowSize <= 740 ? "" : "45%")};
   height: 100%;
   background-color: #ffffff;
   border-right: 1px solid #f5f5f5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  visibility: ${(props) => (props.show ? "hidden" : "visible")};
-  transition: ${(props) => (props.show ? "0.1s ease-in" : "0.1s ease-in-out")};
+  visibility: ${(props) => (props.windowSize <= 740 ? "hidden" : "visible")};
+  transition: ${(props) =>
+    props.windowSize <= 740 ? "0.1s ease-in" : "0.1s ease-in-out"};
 `;
 
 const SearchWrapper = styled.div`
@@ -33,29 +34,12 @@ const Guide = styled.div`
   line-height: 18px;
 `;
 
-const SelectBox = styled.select`
-  &:-ms-expand {
-    display: none;
-  }
-  -o-appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  width: 200px;
-  padding: 10px;
-  &:focus {
-    outline: none;
-    border: 2px solid #ccd3fb;
-  }
-`;
-
 const Search = ({
-  showSearch,
   setClickItem,
   result,
   isLoading,
   searchLocation,
+  windowSize,
 }) => {
   const changeLocation = (optionItem) => {
     console.log(optionItem);
@@ -63,7 +47,7 @@ const Search = ({
   };
 
   return (
-    <Container show={showSearch}>
+    <Container windowSize={windowSize}>
       <SearchWrapper>
         <CustomSelect changeLocation={changeLocation} />
       </SearchWrapper>
@@ -81,7 +65,6 @@ const Search = ({
         result={result}
         setClickItem={setClickItem}
         isLoading={isLoading}
-        showSearch={showSearch}
       />
     </Container>
   );

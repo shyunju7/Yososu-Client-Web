@@ -8,7 +8,7 @@ const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.6);
   bottom: 2rem;
   right: 2rem;
-  z-index: 1000;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;

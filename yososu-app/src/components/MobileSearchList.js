@@ -4,10 +4,8 @@ import SearchListItem from "./SearchListItem";
 
 const Container = styled.div`
   position: absolute;
-  width: 80%;
-  height: 90%;
-  top: 50px;
-  left: 10%;
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -28,7 +26,7 @@ const NoData = styled.span`
   text-align: center;
 `;
 
-const MobileSearchList = ({ result, setClickItem }) => {
+const MobileSearchList = ({ result, setClickItem, setClickListButton }) => {
   return (
     <Container>
       {result && result.length > 0 ? (
@@ -45,6 +43,7 @@ const MobileSearchList = ({ result, setClickItem }) => {
             lat={item.lat}
             long={item.lng}
             color={item.color}
+            setClickListButton={setClickListButton}
           />
         ))
       ) : (

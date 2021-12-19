@@ -135,7 +135,7 @@ const testData = [
   },
 ];
 
-const MainContainer = () => {
+const MainContainer = ({ windowSize }) => {
   const [result, setResult] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -169,6 +169,7 @@ const MainContainer = () => {
       isLoading={isLoading}
       searchLocation={searchLocation}
       error={error}
+      windowSize={windowSize}
     />
   );
 };

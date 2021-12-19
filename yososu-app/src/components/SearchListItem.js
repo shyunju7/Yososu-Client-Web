@@ -64,8 +64,10 @@ const SearchListItem = ({
   lat,
   long,
   updateTime,
+  setClickListButton,
 }) => {
   const onClickItem = () => {
+    setClickListButton((prev) => !prev);
     setClickItem({
       lat: lat,
       lng: long,
