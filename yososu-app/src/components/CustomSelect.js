@@ -43,7 +43,7 @@ const OptionItem = styled.li`
   padding: 6px 12px;
   transition: 0.1s ease-in;
   &:hover {
-    background-color: #334fef;
+    background-color: #667bf3;
   }
 `;
 
@@ -71,10 +71,9 @@ const CustomSelect = ({ changeLocation }) => {
   const [currentOption, setCurrentOption] = useState("강원도");
 
   const handleChangeOption = (e) => {
-    console.log(`click!`, e.target);
     setCurrentOption(e.target.innerText);
     setShowOption(!showOption);
-    changeLocation(OptionValue.key === e.target.innerText);
+    changeLocation(e.target.innerText);
   };
 
   return (
