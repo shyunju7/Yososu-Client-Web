@@ -5,7 +5,7 @@ import { SiGmail } from "react-icons/si";
 import { ImWordpress } from "react-icons/im";
 const Container = styled.footer`
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-color: #e5e9fd;
   padding: 10px 20px;
   position: relative;
@@ -60,7 +60,7 @@ const Footer = () => (
       </Guide>
     </Contents>
     <Contents>
-      <Tag>Developer & Contact</Tag>
+      <Tag>Developer</Tag>
       <address>
         Front-end 송현주{" "}
         <a href="https://github.com/shyunju7" target="_blank" rel="noreferrer">
@@ -68,7 +68,8 @@ const Footer = () => (
         </a>{" "}
         <a href="mailto:songthdo427@gmail.com">
           <SiGmail color="red" size="0.8rem" />
-        </a>
+        </a>{" "}
+        songthdo427@gmail.com
       </address>
 
       <address>
@@ -78,9 +79,15 @@ const Footer = () => (
         </a>{" "}
         <a href="mailto:eleeje97@gmail.com">
           <SiGmail color="red" size="0.8rem" />
-        </a>
+        </a>{" "}
+        eleeje97@gmail.com
       </address>
     </Contents>
+    <CopyRight>
+      {" "}
+      &copy; {new Date().getFullYear()}
+      Team-Whooper
+    </CopyRight>
   </Container>
 );
 export default Footer;
