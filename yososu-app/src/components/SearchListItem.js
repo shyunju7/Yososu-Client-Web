@@ -23,7 +23,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: #3e4958;
   margin: unset;
   margin-bottom: 12px;
@@ -45,12 +45,13 @@ const Tag = styled.span`
 `;
 
 const Content = styled.div`
-  font-size: 0.6rem;
+  font-size: 0.64rem;
   color: #3e4958;
   margin-bottom: 6px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  line-height: 18px;
 `;
 
 const SearchListItem = ({
