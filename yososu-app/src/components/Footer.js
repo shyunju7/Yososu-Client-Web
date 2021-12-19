@@ -2,15 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { RiGithubFill } from "react-icons/ri";
 import { SiGmail } from "react-icons/si";
-import { ImWordpress } from "react-icons/im";
 const Container = styled.footer`
   width: 100%;
-  height: 150px;
   background-color: #e5e9fd;
   padding: 10px 20px;
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.windowSize <= 740 ? "column" : "row")};
 `;
 
 const Title = styled.span`
@@ -27,7 +25,7 @@ const Tag = styled.div`
 `;
 
 const Contents = styled.div`
-  width: 50%;
+  width: 100%;
   margin-top: 12px;
   color: #979797;
   line-height: 20px;
@@ -45,13 +43,11 @@ const CopyRight = styled.h3`
   font-family: S-CoreDream-4Regular;
   color: #667bf3;
   margin-top: 12px;
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
+  float: right;
 `;
 
-const Footer = () => (
-  <Container>
+const Footer = ({ windowSize }) => (
+  <Container windowSize={windowSize}>
     <Contents>
       <Title>요소수 여기서</Title>는 요소수가 필요한 모든 분들께 <br />
       요소수 판매처 위치와 재고량 등의 정보를 쉽고 빠르게 제공하는 서비스입니다.
@@ -68,10 +64,8 @@ const Footer = () => (
         </a>{" "}
         <a href="mailto:songthdo427@gmail.com">
           <SiGmail color="red" size="0.8rem" />
-        </a>{" "}
-        songthdo427@gmail.com
+        </a>
       </address>
-
       <address>
         Back-end 이다은{" "}
         <a href="https://github.com/eleeje97" target="_blank" rel="noreferrer">
@@ -79,15 +73,14 @@ const Footer = () => (
         </a>{" "}
         <a href="mailto:eleeje97@gmail.com">
           <SiGmail color="red" size="0.8rem" />
-        </a>{" "}
-        eleeje97@gmail.com
+        </a>
       </address>
+      <CopyRight>
+        {" "}
+        &copy; {new Date().getFullYear()}
+        Team-Whooper
+      </CopyRight>
     </Contents>
-    <CopyRight>
-      {" "}
-      &copy; {new Date().getFullYear()}
-      Team-Whooper
-    </CopyRight>
   </Container>
 );
 export default Footer;
