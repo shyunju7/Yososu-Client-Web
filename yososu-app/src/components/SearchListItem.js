@@ -67,7 +67,9 @@ const SearchListItem = ({
   setClickListButton,
 }) => {
   const onClickItem = () => {
-    setClickListButton((prev) => !prev);
+    if (setClickListButton) {
+      setClickListButton((prev) => !prev);
+    }
     setClickItem({
       lat: lat,
       lng: long,
