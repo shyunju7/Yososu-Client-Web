@@ -19,4 +19,5 @@ export const ListButton = styled.button`
   z-index: 100;
   bottom: 40px;
   left: 40%;
+  box-shadow: 2px 2px 2px #c4c4c4;
 `;

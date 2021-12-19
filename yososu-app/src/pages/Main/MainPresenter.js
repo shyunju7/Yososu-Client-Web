@@ -8,11 +8,11 @@ import { Container, ListButton } from "./styles";
 const MainPresenter = ({ result, isLoading, searchLocation, windowSize }) => {
   const [isClickedItem, setClickItem] = useState({ lat: null, long: null });
   const [isClickedListButton, setClickListButton] = useState(false);
+
   return isLoading ? (
     <Loading />
   ) : (
     <Container>
-      {console.log(windowSize)}
       {windowSize <= 740 ? (
         <ListButton
           onClick={() => {
@@ -37,6 +37,7 @@ const MainPresenter = ({ result, isLoading, searchLocation, windowSize }) => {
           setClickItem={setClickItem}
           searchLocation={searchLocation}
           setClickListButton={setClickListButton}
+          isClickedListButton={isClickedListButton}
         />
       ) : null}
 
