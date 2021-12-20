@@ -14,7 +14,6 @@ const Container = styled.div`
   flex-direction: column;
   border-bottom: 2px solid #f5f5f5;
   padding: 20px;
-  margin-top: 12px;
   margin-left: 10px;
   cursor: pointer;
   &:hover {

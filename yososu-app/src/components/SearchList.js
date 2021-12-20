@@ -6,9 +6,9 @@ const Container = styled.div`
   background-color: transparent;
   overflow-y: auto;
   display: grid;
-  gap: 2px 12px;
+  gap: 2px 0px;
   grid-template-columns: 1fr 1fr;
-  margin: 16px 0px;
+  margin-top: 12px;
 `;
 
 const NoData = styled.span`
