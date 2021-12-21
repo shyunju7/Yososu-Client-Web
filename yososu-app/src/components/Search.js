@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import CustomSelect from "./CustomSelect";
 import SearchList from "./SearchList";
@@ -26,7 +26,9 @@ const SearchWrapper = styled.div`
 `;
 
 const Contents = styled.span`
+  width: 100%;
   margin-top: 24px;
+  margin-left: 24px;
   color: #979797;
   font-weight: bold;
 `;
@@ -50,6 +52,34 @@ const Guide = styled.div`
   margin-top: 12px;
 `;
 
+const InfoButton = styled.span`
+  position: absolute;
+  top: 56px;
+  font-family: S-CoreDream-6Bold;
+  left: 550px;
+  background-color: #ffffff;
+  border: 2px solid #0023eb;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  text-align: center;
+  color: #0023eb;
+`;
+
+const InfoWindow = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 1002;
+  color: #ffffff;
+  width: 300px;
+  line-height: 18px;
+  font-size: 12px;
+  position: absolute;
+  top: 24px;
+  left: 580px;
+`;
+
 const Search = ({
   setClickItem,
   result,
@@ -57,23 +87,45 @@ const Search = ({
   searchLocation,
   windowSize,
 }) => {
+  const [isVisible, setVisible] = useState(false);
   const changeLocation = (optionItem) => {
     console.log(optionItem);
     searchLocation(optionItem);
   };
 
+  useEffect(() => {
+    const info = document.querySelector("#info");
+    info.addEventListener("mouseover", function () {
+      setVisible(true);
+    });
+
+    info.addEventListener("mouseout", function () {
+      setVisible(false);
+    });
+  }, []);
   return (
     <Container windowSize={windowSize}>
       <Contents>
         <Title>요소수 요기서</Title>는 요소수 판매처 위치와 재고량 등의 정보를
         제공합니다.
       </Contents>
-
       <Guide>
         * 요소수 요기서에 모든 정보는 환경부의 공공 데이터를 활용하였습니다:){" "}
         <br />* 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후,
         방문바랍니다. <br />
+        <InfoButton id="info">
+          <span role="img" aria-label="info">
+            i
+          </span>
+        </InfoButton>
       </Guide>
+      {isVisible ? (
+        <InfoWindow>
+          공개되는 요소수 가격은 기본적으로 벌크 요소수 가격이며, 페트 요소수
+          가격은 표시된 가격과 다를 수 있습니다. 벌크 요소수가 매진 되었을 경우,
+          페트 요소수 가격으로 업데이트 됩니다.{" "}
+        </InfoWindow>
+      ) : null}
       <SearchWrapper>
         <CustomSelect changeLocation={changeLocation} />
       </SearchWrapper>
