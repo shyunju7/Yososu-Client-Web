@@ -22,7 +22,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 0.72rem;
+  font-size: 17px;
+  line-height: 20px;
   color: #3e4958;
   margin: unset;
   margin-bottom: 12px;
@@ -39,12 +40,12 @@ const Tag = styled.span`
   width: 50%;
   display: flex;
   align-items: flex-end;
-  font-size: 0.7rem;
+  font-size: 14px;
   font-family: S-CoreDream-6Bold;
 `;
 
 const Content = styled.div`
-  font-size: 0.64rem;
+  font-size: 14px;
   color: #3e4958;
   margin-bottom: 6px;
   display: flex;
@@ -89,28 +90,28 @@ const SearchListItem = ({
 
       <TagContainer>
         <Tag aria-label="price" role="img">
-          <RiMoneyDollarCircleFill color="#0023eb" size="0.8rem" /> 가격 {price}
+          <RiMoneyDollarCircleFill color="#0023eb" size="16px" /> 가격 {price}
         </Tag>
         <Tag aria-label="stock" role="img">
           {stock === "0" ? (
-            <MdOutlineInvertColorsOff color="#EA3535" size="0.8rem" />
+            <MdOutlineInvertColorsOff color="#EA3535" size="16px" />
           ) : (
-            <RiContrastDrop2Line color="#0023eb" size="0.8rem" />
+            <RiContrastDrop2Line color="#0023eb" size="16px" />
           )}
           재고량 {stock}
         </Tag>
       </TagContainer>
 
       <Content>
-        <RiMapPin2Fill size="0.7rem" />
+        <RiMapPin2Fill size="14px" />
         {address}
       </Content>
       <Content>
-        <RiPhoneFill size="0.7rem" />
+        <RiPhoneFill size="14px" />
         {phoneNum}
       </Content>
       <Content>
-        <RiMapPinTimeFill size="0.7rem" />
+        <RiMapPinTimeFill size="14px" />
         {operatingTime}
       </Content>
     </Container>

@@ -3,18 +3,21 @@ import { useState } from "react";
 
 const SelectBox = styled.div`
   position: relative;
-  width: 80%;
-  border: 2px solid #dddddd;
+  width: 90%;
+  border: 2px solid #f5f5f5;
   padding: 8px;
   margin-top: 12px;
   border-radius: 12px;
   cursor: pointer;
 
+  align-self: center;
   &::before {
-    content: "🔽";
+    content: "⌵";
     position: absolute;
-    top: 7px;
+    top: 0px;
     right: 8px;
+    color: #0023eb;
+    font-size: 24px;
   }
 `;
 
@@ -39,7 +42,7 @@ const SelectOption = styled.ul`
 `;
 
 const OptionItem = styled.li`
-  font-size: 0.8rem;
+  font-size: 14px;
   padding: 6px 12px;
   transition: 0.1s ease-in;
   &:hover {

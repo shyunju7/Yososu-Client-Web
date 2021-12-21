@@ -6,8 +6,8 @@ const Container = styled.div`
   height: 120px;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.6);
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 36px;
+  right: 36px;
   z-index: 2;
   display: flex;
   flex-direction: column;

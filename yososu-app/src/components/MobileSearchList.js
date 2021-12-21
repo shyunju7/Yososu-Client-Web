@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CustomSelect from "./CustomSelect";
 import SearchListItem from "./SearchListItem";
 
 const Container = styled.div`
@@ -7,9 +8,6 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border: 2px solid #f5f5f5;
   z-index: 1001;
 `;
 
@@ -34,7 +32,7 @@ const MapButton = styled.button`
   border-radius: 16px;
   background-color: #99a7f7;
   color: #ffffff;
-  font-size: 0.7rem;
+  font-size: 14px;
   position: absolute;
   z-index: 100;
   bottom: 40px;
@@ -50,9 +48,20 @@ const NoData = styled.span`
   text-align: center;
 `;
 
-const MobileSearchList = ({ result, setClickItem, setClickListButton }) => {
+const MobileSearchList = ({
+  result,
+  setClickItem,
+  setClickListButton,
+  searchLocation,
+}) => {
+  const changeLocation = (optionItem) => {
+    console.log(optionItem);
+    searchLocation(optionItem);
+  };
+
   return (
     <Container>
+      <CustomSelect changeLocation={changeLocation} />
       <MobileList>
         {result && result.length > 0 ? (
           result.map((item) => (

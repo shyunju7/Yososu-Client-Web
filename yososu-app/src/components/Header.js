@@ -10,17 +10,17 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.1rem;
+  font-size: 18px;
   font-weight: 700;
   font-family: S-CoreDream-8Heavy;
   color: #0023eb;
-  margin-left: 38px;
+  margin-left: 24px;
 `;
 
 const Text = styled.span`
   font-family: S-CoreDream-4Regular;
   color: #979797;
-  font-size: 0.62rem;
+  font-size: 13px;
   margin-left: 8px;
 `;
 

@@ -156,40 +156,6 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
     [kakaoMap, handleClusterMarker, handleSetLocInfo]
   );
 
-  const handleGetCurrentLocation = (map) => {
-    const imageSize = new kakao.maps.Size(45, 45);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let lat = position.coords.latitude,
-          lon = position.coords.longitude;
-
-        let locPosition = new kakao.maps.LatLng(lat, lon);
-
-        new kakao.maps.Marker({
-          map: map,
-          position: locPosition,
-          image: new kakao.maps.MarkerImage(BlueMarker, imageSize),
-        });
-
-        let message =
-          '<div style="padding:12px; font-size: 12px; border-radius: 12px; border: 1px solid #d4d4d4; background-color : #ffffff;">지금 여기에 있어요!</div>';
-
-        let content = message;
-
-        let customOverlay = new kakao.maps.CustomOverlay({
-          position: locPosition,
-          content: content,
-          xAnchor: 0.5,
-          yAnchor: 2.2,
-          zIndex: 3,
-        });
-
-        customOverlay.setMap(map);
-        map.setCenter(locPosition);
-      });
-    }
-  };
-
   useMemo(() => {
     let colorMarkerMap = new Map();
     initializeColorMap(colorMarkerMap);
@@ -203,7 +169,6 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
     };
     const map = new kakao.maps.Map(mapRef.current, mapOptions);
     setKakaoMap(map);
-    handleGetCurrentLocation(map);
   }, [mapRef]);
 
   useEffect(() => {

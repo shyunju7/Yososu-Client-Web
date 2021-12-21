@@ -25,14 +25,28 @@ const SearchWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+const Contents = styled.span`
+  margin-top: 24px;
+  color: #979797;
+  font-weight: bold;
+`;
+
+const Title = styled.span`
+  font-size: 18px;
+  font-family: S-CoreDream-6Bold;
+  color: #667bf3;
+  margin-top: 12px;
+`;
+
 const Guide = styled.div`
   width: 100%;
   margin-left: 64px;
   color: #c4c4c4;
-  font-size: 0.55rem;
+  font-size: 12px;
   text-align: start;
   align-self: center;
   line-height: 18px;
+  margin-top: 12px;
 `;
 
 const Search = ({
@@ -49,19 +63,19 @@ const Search = ({
 
   return (
     <Container windowSize={windowSize}>
+      <Contents>
+        <Title>요소수 요기서</Title>는 요소수 판매처 위치와 재고량 등의 정보를
+        제공합니다.
+      </Contents>
+
+      <Guide>
+        * 요소수 요기서에 모든 정보는 환경부의 공공 데이터를 활용하였습니다:){" "}
+        <br />* 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후,
+        방문바랍니다. <br />
+      </Guide>
       <SearchWrapper>
         <CustomSelect changeLocation={changeLocation} />
       </SearchWrapper>
-
-      <Guide>
-        * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후, 방문바랍니다.{" "}
-        <br />
-        * 요소수 가격은 기본적으로 벌크 요소수 가격이며, 페트 요소수 가격은
-        표시된 가격과 다를 수 있습니다.
-        <br />* 벌크 요소수가 매진 되었을 경우,페트 요소수 가격으로 업데이트
-        됩니다.
-      </Guide>
-
       <SearchList
         result={result}
         setClickItem={setClickItem}
