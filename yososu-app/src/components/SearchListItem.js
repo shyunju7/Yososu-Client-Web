@@ -65,6 +65,7 @@ const SearchListItem = ({
   lat,
   long,
   updateTime,
+  color,
   setClickListButton,
 }) => {
   const onClickItem = () => {
@@ -81,6 +82,7 @@ const SearchListItem = ({
       inventory: stock,
       price: price,
       regDt: updateTime,
+      color: color,
     });
   };
 

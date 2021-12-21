@@ -10,7 +10,6 @@ import GreenMarker from "../../src/assets/green_marker.png";
 import YellowMarker from "../../src/assets/yellow_marker.png";
 import RedMarker from "../../src/assets/red_marker.png";
 import GrayMarker from "../../src/assets/gray_marker.png";
-import BlueMarker from "../../src/assets/blue_marker.png";
 
 const Container = styled.div`
   width: ${(props) =>
@@ -24,6 +23,7 @@ const { kakao } = window;
 const MapComponent = ({ isClickedItem, result, windowSize }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
+  const imageSize = new kakao.maps.Size(35, 35);
   let clusterer = new kakao.maps.MarkerClusterer({
     map: kakaoMap,
     averageCenter: true,
@@ -92,14 +92,71 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
   // 클릭한 아이템 위치로 카메라 이동
   const handleMoveLocation = useCallback(() => {
     let clickedLocation;
+    console.log(isClickedItem);
     if (isClickedItem.lat !== null && isClickedItem.lng !== null) {
-      clickedLocation = new kakao.maps.LatLng(
-        isClickedItem.lat,
-        isClickedItem.lng
-      );
-      kakaoMap.setLevel(3);
-      kakaoMap.setCenter(clickedLocation);
-      handleSetLocInfo(isClickedItem);
+      if (isClickedItem.lat != "0E-8") {
+        clickedLocation = new kakao.maps.LatLng(
+          isClickedItem.lat,
+          isClickedItem.lng
+        );
+        kakaoMap.setLevel(3);
+        kakaoMap.setCenter(clickedLocation);
+        handleSetLocInfo(isClickedItem);
+      } else {
+        const geocoder = new kakao.maps.services.Geocoder();
+        geocoder.addressSearch(isClickedItem.addr, function (result, status) {
+          if (status === kakao.maps.services.Status.OK) {
+            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            kakaoMap.setLevel(3);
+            kakaoMap.setCenter(coords);
+
+            handleSetLocInfo({
+              lat: result[0].y,
+              lng: result[0].x,
+              name: isClickedItem.name,
+              addr: isClickedItem.addr,
+              tel: isClickedItem.tel,
+              openTime: isClickedItem.openTime,
+              inventory: isClickedItem.inventory,
+              price: isClickedItem.price,
+              regDt: isClickedItem.regDt,
+            });
+
+            let colorMarkerMap = new Map();
+            colorMarkerMap.set("GREEN", GreenMarker);
+            colorMarkerMap.set("YELLOW", YellowMarker);
+            colorMarkerMap.set("RED", RedMarker);
+            colorMarkerMap.set("GRAY", GrayMarker);
+
+            let marker = new kakao.maps.Marker({
+              map: kakaoMap,
+              position: new kakao.maps.LatLng(
+                parseFloat(result[0].y),
+                parseFloat(result[0].x)
+              ),
+              title: isClickedItem.name,
+              image: new kakao.maps.MarkerImage(
+                colorMarkerMap.get(isClickedItem.color),
+                imageSize
+              ),
+            });
+
+            kakao.maps.event.addListener(marker, "click", function () {
+              handleSetLocInfo({
+                lat: result[0].y,
+                lng: result[0].x,
+                name: isClickedItem.name,
+                addr: isClickedItem.addr,
+                tel: isClickedItem.tel,
+                openTime: isClickedItem.openTime,
+                inventory: isClickedItem.inventory,
+                price: isClickedItem.price,
+                regDt: isClickedItem.regDt,
+              });
+            });
+          }
+        });
+      }
     }
   }, [isClickedItem, kakaoMap, handleSetLocInfo]);
 
@@ -125,8 +182,6 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
   const handleSetMarker = useCallback(
     (colorMarkerMap, result) => {
       clusterer.clear();
-      const imageSize = new kakao.maps.Size(35, 35);
-
       if (result && result.length > 0) {
         const markers = result.map((item) => {
           if (!isNaN(item.lat)) {
