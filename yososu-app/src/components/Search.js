@@ -27,15 +27,16 @@ const SearchWrapper = styled.div`
 `;
 
 const Contents = styled.span`
-  width: 80%;
+  width: 90%;
   margin-top: 24px;
-  margin-right: 32px;
+  margin-right: 28px;
   margin-left: 24px;
   color: #979797;
   align-self: flex-start;
   font-size: 14px;
   font-weight: bold;
   line-height: 18px;
+  margin-bottom: 12px;
 `;
 
 const Title = styled.span`
