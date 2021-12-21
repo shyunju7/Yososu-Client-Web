@@ -11,7 +11,6 @@ import { MdOutlineInvertColorsOff } from "react-icons/md";
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;
-  width: 280px;
   flex-direction: column;
   border-bottom: 2px solid #f5f5f5;
   padding: 20px;

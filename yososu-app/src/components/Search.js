@@ -10,6 +10,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
   visibility: ${(props) => (props.windowSize <= 740 ? "hidden" : "visible")};
   transition: ${(props) =>
     props.windowSize <= 740 ? "0.1s ease-in" : "0.1s ease-in-out"};

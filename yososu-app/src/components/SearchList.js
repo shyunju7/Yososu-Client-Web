@@ -10,9 +10,7 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   margin-top: 12px;
   margin-bottom: 12px;
-
-  /* place-content: center; */
-  //grid-template-columns: repeat(auto-fit, 1fr, 1fr);
+  overflow-x: hidden;
 `;
 
 const NoData = styled.span`
