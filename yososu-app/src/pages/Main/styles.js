@@ -14,7 +14,7 @@ export const ListButton = styled.button`
   border-radius: 16px;
   background-color: #99a7f7;
   color: #ffffff;
-  font-size: 1;
+  font-size: 14px;
   position: absolute;
   z-index: 100;
   bottom: 40px;

@@ -92,7 +92,6 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
   // 클릭한 아이템 위치로 카메라 이동
   const handleMoveLocation = useCallback(() => {
     let clickedLocation;
-    console.log(isClickedItem);
     if (isClickedItem.lat !== null && isClickedItem.lng !== null) {
       if (isClickedItem.lat != "0E-8") {
         clickedLocation = new kakao.maps.LatLng(

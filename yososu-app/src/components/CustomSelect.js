@@ -4,7 +4,6 @@ import { useState } from "react";
 const SelectBox = styled.div`
   position: relative;
   width: 90%;
-  border: 2px solid #f5f5f5;
   padding: 8px;
   margin-top: 12px;
   border-radius: 12px;
@@ -75,7 +74,6 @@ const CustomSelect = ({ changeLocation }) => {
   const [currentOption, setCurrentOption] = useState("강원도");
 
   const handleChangeOption = (e) => {
-    console.log(`current,`, e.target.innerText);
     setCurrentOption(e.target.innerText);
     setShowOption(!showOption);
     changeLocation(e.target.innerText);
