@@ -7,7 +7,7 @@ const Container = styled.div`
   overflow-y: auto;
   display: grid;
   gap: 2px 0px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 280px);
   margin-top: 12px;
   margin-bottom: 12px;
   overflow-x: hidden;

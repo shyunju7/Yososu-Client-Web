@@ -27,15 +27,19 @@ const SearchWrapper = styled.div`
 `;
 
 const Contents = styled.span`
-  width: 100%;
+  width: 80%;
   margin-top: 24px;
+  margin-right: 32px;
   margin-left: 24px;
   color: #979797;
+  align-self: flex-start;
+  font-size: 14px;
   font-weight: bold;
+  line-height: 18px;
 `;
 
 const Title = styled.span`
-  font-size: 18px;
+  font-size: 16px;
   font-family: S-CoreDream-6Bold;
   color: #667bf3;
   margin-top: 12px;
@@ -139,6 +143,7 @@ const Search = ({
         result={result}
         setClickItem={setClickItem}
         isLoading={isLoading}
+        windowSize={windowSize}
       />
     </Container>
   );
