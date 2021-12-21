@@ -8,6 +8,7 @@ const Container = styled.div`
   background-color: #ffffff;
   border-right: 1px solid #f5f5f5;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
@@ -68,7 +69,7 @@ const InfoButton = styled.span`
 `;
 
 const InfoWindow = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #414350;
   border-radius: 12px;
   padding: 20px;
   z-index: 1002;
@@ -78,7 +79,7 @@ const InfoWindow = styled.div`
   font-size: 12px;
   position: absolute;
   top: 24px;
-  left: 580px;
+  right: 24px;
 `;
 
 const Search = ({
