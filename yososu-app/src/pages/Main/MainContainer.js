@@ -4,7 +4,7 @@ import MainPresenter from "./MainPresenter";
 
 const MainContainer = ({ windowSize }) => {
   const [result, setResult] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const searchLocation = useCallback(
     (searchTerm) => {
