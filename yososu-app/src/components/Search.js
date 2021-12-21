@@ -50,13 +50,14 @@ const Guide = styled.div`
   align-self: center;
   line-height: 18px;
   margin-top: 12px;
+  position: relative;
 `;
 
 const InfoButton = styled.span`
   position: absolute;
-  top: 56px;
+  top: 10px;
   font-family: S-CoreDream-6Bold;
-  left: 550px;
+  right: 56px;
   background-color: #ffffff;
   border: 2px solid #0023eb;
   height: 18px;
