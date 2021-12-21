@@ -44,6 +44,7 @@ const CopyRight = styled.h3`
   color: #667bf3;
   margin-top: 12px;
   float: right;
+  padding: 20px;
 `;
 
 const Footer = ({ windowSize }) => (
