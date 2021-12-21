@@ -53,7 +53,7 @@ const OptionItem = styled.li`
 
 const OptionValue = [
   { key: "강원도", value: "강원" },
-  { key: "경기", value: "경기" },
+  { key: "경기도", value: "경기" },
   { key: "경상남도", value: "경남" },
   { key: "경상북도", value: "경북" },
   { key: "대구광역시", value: "대구" },

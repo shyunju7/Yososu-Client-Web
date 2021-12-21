@@ -27,7 +27,7 @@ const MainContainer = ({ windowSize }) => {
 
   useEffect(() => {
     setResult([]);
-    searchLocation("강원");
+    searchLocation("강원도");
   }, [searchLocation]);
 
   return (
