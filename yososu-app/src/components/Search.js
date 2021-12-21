@@ -36,6 +36,7 @@ const Title = styled.span`
   font-family: S-CoreDream-6Bold;
   color: #667bf3;
   margin-top: 12px;
+  margin-left: 12px;
 `;
 
 const Guide = styled.div`

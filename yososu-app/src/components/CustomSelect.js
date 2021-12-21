@@ -9,7 +9,8 @@ const SelectBox = styled.div`
   margin-top: 12px;
   border-radius: 12px;
   cursor: pointer;
-
+  background-color: #ffffff;
+  box-shadow: 1px 2px 2px #dddddd;
   align-self: center;
   &::before {
     content: "⌵";

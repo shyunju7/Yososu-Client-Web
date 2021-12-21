@@ -9,19 +9,19 @@ const Container = styled.div`
   height: 100%;
   background-color: #ffffff;
   z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 `;
 
 const MobileList = styled.div`
   width: 100%;
-  height: 100%;
   background-color: #ffffff;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border: 2px solid #f5f5f5;
   overflow-y: scroll;
   display: grid;
   gap: 2px 12px;
   grid-template-columns: 1fr;
+  margin-top: 12px;
 `;
 
 const MapButton = styled.button`
