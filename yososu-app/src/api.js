@@ -1,13 +1,7 @@
 import axios from "axios";
-import https from "https";
-
-const agent = new https.Agent({
-  rejectUnauthorized: false,
-});
 
 const api = axios.create({
-  baseURL: "https://3.34.236.99:8080/",
-  httpsAgent: agent,
+  baseURL: "http://3.34.236.99:8080/",
 });
 
 export const yososuApi = {
