@@ -43,8 +43,6 @@ const CopyRight = styled.h3`
   font-family: S-CoreDream-4Regular;
   color: #667bf3;
   margin-top: 12px;
-  float: right;
-  padding: 20px;
 `;
 
 const Footer = ({ windowSize }) => (
@@ -58,7 +56,7 @@ const Footer = ({ windowSize }) => (
     </Contents>
     <Contents>
       <Tag>Developer</Tag>
-      <address>
+      {/* <address>
         Front-end 송현주{" "}
         <a href="https://github.com/shyunju7" target="_blank" rel="noreferrer">
           <RiGithubFill size="1rem" color="black" />
@@ -75,7 +73,7 @@ const Footer = ({ windowSize }) => (
         <a href="mailto:eleeje97@gmail.com">
           <SiGmail color="red" size="0.8rem" />
         </a>
-      </address>
+      </address> */}
       <CopyRight>
         {" "}
         &copy; {new Date().getFullYear()}

@@ -9,6 +9,7 @@ const Container = styled.div`
   gap: 2px 0px;
   grid-template-columns: 1fr 1fr;
   margin-top: 12px;
+  margin-bottom: 12px;
 `;
 
 const NoData = styled.span`

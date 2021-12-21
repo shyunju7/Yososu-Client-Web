@@ -20,7 +20,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Main windowSize={windowSize} />
-      {/* <Footer windowSize={windowSize} /> */}
+      <Footer windowSize={windowSize} />
     </div>
   );
 }
