@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SelectBox = styled.div`
   position: relative;
@@ -68,7 +68,7 @@ const OptionValue = [
   { key: "충청남도", value: "충남" },
   { key: "충청북도", value: "충북" },
 ];
-const CustomSelect = ({ changeLocation }) => {
+const CustomSelect = ({ sortingValue, searchLocation }) => {
   const [showOption, setShowOption] = useState(false);
 
   const [currentOption, setCurrentOption] = useState("강원도");
@@ -76,8 +76,11 @@ const CustomSelect = ({ changeLocation }) => {
   const handleChangeOption = (e) => {
     setCurrentOption(e.target.innerText);
     setShowOption(!showOption);
-    changeLocation(e.target.innerText);
   };
+
+  useEffect(() => {
+    searchLocation(currentOption, sortingValue);
+  }, [searchLocation, sortingValue, currentOption]);
 
   return (
     <SelectBox onClick={() => setShowOption(!showOption)}>

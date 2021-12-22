@@ -6,21 +6,39 @@ const MainContainer = ({ windowSize }) => {
   const [result, setResult] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   const searchLocation = useCallback(
-    (searchTerm) => {
-      yososuApi
-        .getInventoriesInStockOrder(searchTerm)
-        .then((value) => {
-          setResult(value.data.data);
-        })
-        .catch(function () {
-          setError("API 통신 오류 - 관리자에게 문의해주세요:)");
-        })
-        .finally(
-          setTimeout(() => {
-            setLoading(false);
-          }, 500)
-        );
+    (searchTerm, sortingValue = "재고량순") => {
+      setResult([]);
+      if (sortingValue === "재고량순") {
+        yososuApi
+          .getInventoriesInStockOrder(searchTerm)
+          .then((value) => {
+            setResult(value.data.data);
+          })
+          .catch(function () {
+            setError("API 통신 오류 - 관리자에게 문의해주세요:)");
+          })
+          .finally(
+            setTimeout(() => {
+              setLoading(false);
+            }, 500)
+          );
+      } else {
+        yososuApi
+          .getInventoriesInPriceOrder(searchTerm)
+          .then((value) => {
+            setResult(value.data.data);
+          })
+          .catch(function () {
+            setError("API 통신 오류 - 관리자에게 문의해주세요:)");
+          })
+          .finally(
+            setTimeout(() => {
+              setLoading(false);
+            }, 500)
+          );
+      }
     },
     [setResult]
   );

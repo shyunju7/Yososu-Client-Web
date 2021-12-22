@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import CustomSelect from "./CustomSelect";
 import SearchList from "./SearchList";
+import { RiSortDesc } from "react-icons/ri";
 const Container = styled.div`
   width: ${(props) => (props.windowSize <= 740 ? "" : "50%")};
   height: 100%;
@@ -87,6 +88,21 @@ const InfoWindow = styled.div`
   right: 24px;
 `;
 
+const SortingWrapper = styled.span`
+  align-self: flex-end;
+  margin-right: 24px;
+`;
+
+const SortingSelect = styled.select`
+  appearance: none;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #3e4958;
+  font-family: S-CoreDream-4Regular;
+  margin-left: 1px;
+`;
+
 const Search = ({
   setClickItem,
   result,
@@ -95,10 +111,7 @@ const Search = ({
   windowSize,
 }) => {
   const [isVisible, setVisible] = useState(false);
-  const changeLocation = (optionItem) => {
-    console.log(optionItem);
-    searchLocation(optionItem);
-  };
+  const [sortingValue, setSortingValue] = useState("재고량순");
 
   useEffect(() => {
     const info = document.querySelector("#info");
@@ -110,6 +123,11 @@ const Search = ({
       setVisible(false);
     });
   }, []);
+
+  const onChangeSortingValue = (e) => {
+    setSortingValue(e.target.value);
+  };
+
   return (
     <Container windowSize={windowSize}>
       <Contents>
@@ -137,8 +155,22 @@ const Search = ({
         </InfoWindow>
       ) : null}
       <SearchWrapper>
-        <CustomSelect changeLocation={changeLocation} />
+        <CustomSelect
+          sortingValue={sortingValue}
+          searchLocation={searchLocation}
+        />
       </SearchWrapper>
+
+      <SortingWrapper>
+        <RiSortDesc size="16px" color="#3e4958" />
+        <SortingSelect value={sortingValue} onChange={onChangeSortingValue}>
+          재고량순
+          <option defaultChecked value="재고량순">
+            재고량순
+          </option>
+          <option value="가격순">가격순</option>
+        </SortingSelect>
+      </SortingWrapper>
       <SearchList
         result={result}
         setClickItem={setClickItem}
