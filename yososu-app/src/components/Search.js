@@ -27,7 +27,7 @@ const SearchWrapper = styled.div`
 `;
 
 const Contents = styled.span`
-  width: 90%;
+  width: 80%;
   margin-top: 24px;
   margin-right: 28px;
   margin-left: 24px;
@@ -58,16 +58,19 @@ const InfoButton = styled.span`
   position: absolute;
   top: 20px;
   right: 20px;
-  font-family: S-CoreDream-6Bold;
-  background-color: #ffffff;
+  font-weight: bold;
+  background-color: #0023eb;
   border: 2px solid #0023eb;
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
   font-size: 16px;
   padding-top: 1px;
   border-radius: 50%;
   text-align: center;
-  color: #0023eb;
+  color: #ffffff;
+  margin-left: 8px;
+  cursor: default;
+  box-shadow: 1px 1px 3px 1px #d4d4d4;
 `;
 
 const InfoWindow = styled.div`
@@ -112,11 +115,7 @@ const Search = ({
       <Contents>
         <Title>요소수 요기서</Title>는 요소수 판매처 위치와 재고량 등의 정보를
         제공합니다.
-        <InfoButton id="info">
-          <span role="img" aria-label="info">
-            i
-          </span>
-        </InfoButton>
+        <InfoButton id="info">i</InfoButton>
       </Contents>
       {isVisible ? (
         <InfoWindow>
