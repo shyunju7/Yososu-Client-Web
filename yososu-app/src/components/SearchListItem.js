@@ -94,6 +94,7 @@ const SearchListItem = ({
       <TagContainer>
         <Tag aria-label="price" role="img">
           <RiMoneyDollarCircleFill color="#0023eb" size="16px" /> 가격 {price}
+          /L
         </Tag>
         <Tag aria-label="stock" role="img">
           {stock === "0" ? (
