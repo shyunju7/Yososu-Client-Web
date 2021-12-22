@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const NoData = styled.span`
-  width: 200%;
+  width: 100%;
   height: 50vh;
   display: flex;
   background-color: transparent;
