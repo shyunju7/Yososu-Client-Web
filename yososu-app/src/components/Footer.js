@@ -3,6 +3,7 @@ import styled from "styled-components";
 import footerImage from "../assets/footer_img.png";
 const Container = styled.footer`
   width: 100%;
+  height: 78px;
   background-color: #f8f9fe;
   position: relative;
   display: flex;
@@ -20,6 +21,7 @@ const CopyRight = styled.h3`
 `;
 
 const FooterImage = styled.img`
+  margin-top: 8px;
   width: 120px;
 `;
 

@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const SelectBox = styled.div`
   position: relative;
-  width: 82%;
+  width: ${(props) => (props.windowSize <= 740 ? "82%" : "90%")};
   padding: 8px;
   margin-top: 12px;
   border-radius: 12px;
@@ -94,7 +94,10 @@ const CustomSelect = ({ sortingValue, searchLocation, windowSize }) => {
 
   return (
     <Container windowSize={windowSize}>
-      <SelectBox onClick={() => setShowOption(!showOption)}>
+      <SelectBox
+        onClick={() => setShowOption(!showOption)}
+        windowSize={windowSize}
+      >
         <Label>{currentOption}</Label>
         <SelectOption show={showOption}>
           {OptionValue.map((option) => {

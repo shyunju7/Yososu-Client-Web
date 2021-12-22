@@ -102,7 +102,7 @@ const SearchListItem = ({
           ) : (
             <RiContrastDrop2Line color="#0023eb" size="16px" />
           )}
-          재고량 {stock}
+          재고량 {stock}L
         </Tag>
       </TagContainer>
 
