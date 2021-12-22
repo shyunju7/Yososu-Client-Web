@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CustomSelect from "./CustomSelect";
 import SearchList from "./SearchList";
 const Container = styled.div`
-  width: ${(props) => (props.windowSize <= 740 ? "" : "45%")};
+  width: ${(props) => (props.windowSize <= 740 ? "" : "50%")};
   height: 100%;
   background-color: #ffffff;
   border-right: 1px solid #f5f5f5;

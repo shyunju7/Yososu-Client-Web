@@ -7,11 +7,11 @@ const Container = styled.div`
   overflow-y: auto;
   display: grid;
   gap: 2px 0px;
-  grid-template-columns: repeat(auto-fit, 280px);
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   margin-top: 12px;
-  margin-left: 24px;
   margin-bottom: 12px;
   overflow-x: hidden;
+  align-items: center;
 `;
 
 const NoData = styled.span`

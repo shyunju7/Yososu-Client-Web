@@ -16,6 +16,7 @@ const Container = styled.div`
   padding: 20px;
   margin-left: 10px;
   cursor: pointer;
+  background-color: transparent;
   &:hover {
     background-color: rgba(0, 35, 235, 0.03);
   }
