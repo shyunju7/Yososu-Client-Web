@@ -3,26 +3,28 @@ import styled from "styled-components";
 import footerImage from "../assets/footer_img.png";
 const Container = styled.footer`
   width: 100%;
-  height: 78px;
+  height: 50px;
   background-color: #f8f9fe;
-  position: relative;
   display: flex;
+  position: absolute;
+  bottom: 0px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 const CopyRight = styled.h3`
-  font-size: 14px;
+  font-size: 10px;
   font-family: S-CoreDream-4Regular;
   font-weight: bold;
   color: #667bf3;
-  margin-top: 12px;
+  margin-bottom: 8px;
 `;
 
 const FooterImage = styled.img`
   margin-top: 8px;
-  width: 120px;
+  margin-bottom: 2px;
+  width: 90px;
 `;
 
 const Footer = ({ windowSize }) => (

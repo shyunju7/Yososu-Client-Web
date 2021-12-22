@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: calc(100vh - 128px);
   display: flex;
   position: relative;
+  overflow-y: hidden;
 `;
 
 export const ListButton = styled.button`
