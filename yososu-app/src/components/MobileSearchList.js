@@ -18,9 +18,10 @@ const MobileList = styled.div`
   background-color: #ffffff;
   overflow-y: scroll;
   display: grid;
-  gap: 2px 12px;
   grid-template-columns: 1fr;
   margin-top: 12px;
+  overflow-x: hidden;
+  align-items: center;
 `;
 
 const MapButton = styled.button`
@@ -47,14 +48,19 @@ const NoData = styled.span`
   text-align: center;
 `;
 
-const MobileSearchList = ({
-  result,
-  setClickItem,
-  setClickListButton,
-  searchLocation,
-}) => {
+const Guide = styled.div`
+  color: #c4c4c4;
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 6px;
+  text-align: center;
+  margin-top: 12px;
+`;
+
+const MobileSearchList = ({ result, setClickItem, setClickListButton }) => {
   return (
     <Container>
+      <Guide> 판매 주요소 정보는 재고량 순으로 정렬되었습니다 :) </Guide>
       <MobileList>
         {result && result.length > 0 ? (
           result.map((item) => (
@@ -78,7 +84,7 @@ const MobileSearchList = ({
           ))
         ) : (
           <div>
-            <NoData> 조회 데이터가 없습니다.</NoData>
+            <NoData> 조회된 정보가 없습니다.</NoData>
           </div>
         )}
       </MobileList>

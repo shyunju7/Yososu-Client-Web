@@ -6,7 +6,6 @@ const Container = styled.footer`
   background-color: #f8f9fe;
   position: relative;
   display: flex;
-  padding: 12px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -45,7 +45,7 @@ const SearchList = ({ result, setClickItem }) => (
         />
       ))
     ) : (
-      <NoData> 조회 데이터가 없습니다.</NoData>
+      <NoData> 조회된 정보가 없습니다.</NoData>
     )}
   </Container>
 );
