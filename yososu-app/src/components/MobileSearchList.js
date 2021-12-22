@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import CustomSelect from "./CustomSelect";
 import SearchListItem from "./SearchListItem";
 
 const Container = styled.div`
@@ -54,14 +53,8 @@ const MobileSearchList = ({
   setClickListButton,
   searchLocation,
 }) => {
-  const changeLocation = (optionItem) => {
-    console.log(optionItem);
-    searchLocation(optionItem);
-  };
-
   return (
     <Container>
-      <CustomSelect changeLocation={changeLocation} />
       <MobileList>
         {result && result.length > 0 ? (
           result.map((item) => (

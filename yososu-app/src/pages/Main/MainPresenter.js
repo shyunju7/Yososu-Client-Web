@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CustomSelect from "../../components/CustomSelect";
 import Guide from "../../components/Guide";
 import MapComponent from "../../components/Map";
 import MobileSearchList from "../../components/MobileSearchList";
@@ -14,13 +15,19 @@ const MainPresenter = ({ result, isLoading, searchLocation, windowSize }) => {
   ) : (
     <Container>
       {windowSize <= 740 ? (
-        <ListButton
-          onClick={() => {
-            setClickListButton((prev) => !prev);
-          }}
-        >
-          목록보기
-        </ListButton>
+        <>
+          <CustomSelect
+            searchLocation={searchLocation}
+            windowSize={windowSize}
+          />
+          <ListButton
+            onClick={() => {
+              setClickListButton((prev) => !prev);
+            }}
+          >
+            목록보기
+          </ListButton>
+        </>
       ) : (
         <Search
           setClickItem={setClickItem}

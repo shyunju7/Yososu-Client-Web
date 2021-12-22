@@ -158,6 +158,7 @@ const Search = ({
         <CustomSelect
           sortingValue={sortingValue}
           searchLocation={searchLocation}
+          windowSize={windowSize}
         />
       </SearchWrapper>
 

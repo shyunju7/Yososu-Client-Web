@@ -1,9 +1,19 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
+const Container = styled.div`
+  position: ${(props) => (props.windowSize <= 740 ? "absolute" : "none")};
+  width: 100%;
+  z-index: 1000;
+  margin-top: 12px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+`;
+
 const SelectBox = styled.div`
   position: relative;
-  width: 90%;
+  width: 82%;
   padding: 8px;
   margin-top: 12px;
   border-radius: 12px;
@@ -68,7 +78,7 @@ const OptionValue = [
   { key: "충청남도", value: "충남" },
   { key: "충청북도", value: "충북" },
 ];
-const CustomSelect = ({ sortingValue, searchLocation }) => {
+const CustomSelect = ({ sortingValue, searchLocation, windowSize }) => {
   const [showOption, setShowOption] = useState(false);
 
   const [currentOption, setCurrentOption] = useState("강원도");
@@ -83,22 +93,24 @@ const CustomSelect = ({ sortingValue, searchLocation }) => {
   }, [searchLocation, sortingValue, currentOption]);
 
   return (
-    <SelectBox onClick={() => setShowOption(!showOption)}>
-      <Label>{currentOption}</Label>
-      <SelectOption show={showOption}>
-        {OptionValue.map((option) => {
-          return (
-            <OptionItem
-              key={option.key}
-              value={option.value}
-              onClick={handleChangeOption}
-            >
-              {option.key}
-            </OptionItem>
-          );
-        })}
-      </SelectOption>
-    </SelectBox>
+    <Container windowSize={windowSize}>
+      <SelectBox onClick={() => setShowOption(!showOption)}>
+        <Label>{currentOption}</Label>
+        <SelectOption show={showOption}>
+          {OptionValue.map((option) => {
+            return (
+              <OptionItem
+                key={option.key}
+                value={option.value}
+                onClick={handleChangeOption}
+              >
+                {option.key}
+              </OptionItem>
+            );
+          })}
+        </SelectOption>
+      </SelectBox>
+    </Container>
   );
 };
 
