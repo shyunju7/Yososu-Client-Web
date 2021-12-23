@@ -145,13 +145,10 @@ const Search = ({
             방문바랍니다.
           </Guide>
           <Guide>
-            * 공개되는 요소수 가격은 기본적으로 벌크 요소수 가격이며, 페트
-            요소수 가격은 표시된 가격과 다를 수 있습니다.
+            * 요소수 요기서 페이지에는 S-Core에서 제공한 에스코어 드림 폰트가
+            적용되어 있습니다.
           </Guide>
-          <Guide>
-            * 벌크 요소수가 매진 되었을 경우, 페트 요소수 가격으로 업데이트
-            됩니다.
-          </Guide>
+          <Guide>* 요소수 요기서는 KakaoMap API를 활용하였습니다.</Guide>
         </InfoWindow>
       ) : null}
       <SearchWrapper>
