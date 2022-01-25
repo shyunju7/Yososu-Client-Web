@@ -23,7 +23,6 @@ const { kakao } = window;
 const MapComponent = ({ isClickedItem, result, windowSize }) => {
   const mapRef = useRef();
   const [kakaoMap, setKakaoMap] = useState(null);
-  const imageSize = new kakao.maps.Size(35, 35);
   let clusterer = new kakao.maps.MarkerClusterer({
     map: kakaoMap,
     averageCenter: true,
@@ -93,7 +92,7 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
   const handleMoveLocation = useCallback(() => {
     let clickedLocation;
     if (isClickedItem.lat !== null && isClickedItem.lng !== null) {
-      if (isClickedItem.lat != "0E-8") {
+      if (isClickedItem.lat !== "0E-8") {
         clickedLocation = new kakao.maps.LatLng(
           isClickedItem.lat,
           isClickedItem.lng
@@ -136,7 +135,7 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
               title: isClickedItem.name,
               image: new kakao.maps.MarkerImage(
                 colorMarkerMap.get(isClickedItem.color),
-                imageSize
+                new kakao.maps.Size(35, 35)
               ),
             });
 
@@ -193,7 +192,7 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
               title: item.name,
               image: new kakao.maps.MarkerImage(
                 colorMarkerMap.get(item.color),
-                imageSize
+                new kakao.maps.Size(35, 35)
               ),
             });
             // 마커 클릭 이벤트 추가
