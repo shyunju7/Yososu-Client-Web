@@ -33,6 +33,8 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
     colorMarkerMap.set("YELLOW", YellowMarker);
     colorMarkerMap.set("RED", RedMarker);
     colorMarkerMap.set("GRAY", GrayMarker);
+
+    return colorMarkerMap;
   }, []);
 
   const handleSetLocInfo = useCallback(
@@ -120,11 +122,7 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
               regDt: isClickedItem.regDt,
             });
 
-            let colorMarkerMap = new Map();
-            colorMarkerMap.set("GREEN", GreenMarker);
-            colorMarkerMap.set("YELLOW", YellowMarker);
-            colorMarkerMap.set("RED", RedMarker);
-            colorMarkerMap.set("GRAY", GrayMarker);
+            let colorMarkerMap = initializeColorMap(new Map());
 
             let marker = new kakao.maps.Marker({
               map: kakaoMap,
@@ -156,7 +154,7 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
         });
       }
     }
-  }, [isClickedItem, kakaoMap, handleSetLocInfo]);
+  }, [isClickedItem, kakaoMap, handleSetLocInfo, initializeColorMap]);
 
   // 마커 설정 및 클러스터
   const handleClusterMarker = useCallback(
@@ -211,8 +209,7 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
 
   useMemo(() => {
     let colorMarkerMap = new Map();
-    initializeColorMap(colorMarkerMap);
-    handleSetMarker(colorMarkerMap, result);
+    handleSetMarker(initializeColorMap(colorMarkerMap), result);
   }, [initializeColorMap, handleSetMarker, result]);
 
   useEffect(() => {
