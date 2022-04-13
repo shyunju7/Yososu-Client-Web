@@ -1,6 +1,65 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
+const OptionValue = [
+  { key: "강원도", value: "강원" },
+  { key: "경기도", value: "경기" },
+  { key: "경상남도", value: "경남" },
+  { key: "경상북도", value: "경북" },
+  { key: "대구광역시", value: "대구" },
+  { key: "대전광역시", value: "대전" },
+  { key: "부산광역시", value: "부산" },
+  { key: "서울특별시", value: "서울" },
+  { key: "세종자치시", value: "세종" },
+  { key: "울산광역시", value: "울산" },
+  { key: "인천광역시", value: "인천" },
+  { key: "전라남도", value: "전남" },
+  { key: "전라북도", value: "전북" },
+  { key: "제주특별자치도", value: "제주" },
+  { key: "충청남도", value: "충남" },
+  { key: "충청북도", value: "충북" },
+];
+const CustomSelect = ({ sortingValue, searchLocation, windowSize }) => {
+  const [showOption, setShowOption] = useState(false);
+  const [currentOption, setCurrentOption] = useState("강원도");
+
+  const handleChangeOption = (e) => {
+    setCurrentOption(e.target.innerText);
+    setShowOption(!showOption);
+  };
+
+  useEffect(() => {
+    searchLocation(currentOption, sortingValue);
+  }, [searchLocation, sortingValue, currentOption]);
+
+  return (
+    <Container windowSize={windowSize}>
+      <SelectBox
+        onClick={() => setShowOption(!showOption)}
+        windowSize={windowSize}
+      >
+        <Label>{currentOption}</Label>
+        <SelectOption show={showOption}>
+          {OptionValue.map((option) => {
+            return (
+              <OptionItem
+                key={option.key}
+                value={option.value}
+                onClick={handleChangeOption}
+              >
+                {option.key}
+              </OptionItem>
+            );
+          })}
+        </SelectOption>
+      </SelectBox>
+    </Container>
+  );
+};
+
+export default CustomSelect;
+
+// style
 const Container = styled.div`
   position: ${(props) => (props.windowSize <= 740 ? "absolute" : "none")};
   width: 100%;
@@ -59,62 +118,3 @@ const OptionItem = styled.li`
     background-color: #667bf3;
   }
 `;
-
-const OptionValue = [
-  { key: "강원도", value: "강원" },
-  { key: "경기도", value: "경기" },
-  { key: "경상남도", value: "경남" },
-  { key: "경상북도", value: "경북" },
-  { key: "대구광역시", value: "대구" },
-  { key: "대전광역시", value: "대전" },
-  { key: "부산광역시", value: "부산" },
-  { key: "서울특별시", value: "서울" },
-  { key: "세종자치시", value: "세종" },
-  { key: "울산광역시", value: "울산" },
-  { key: "인천광역시", value: "인천" },
-  { key: "전라남도", value: "전남" },
-  { key: "전라북도", value: "전북" },
-  { key: "제주특별자치도", value: "제주" },
-  { key: "충청남도", value: "충남" },
-  { key: "충청북도", value: "충북" },
-];
-const CustomSelect = ({ sortingValue, searchLocation, windowSize }) => {
-  const [showOption, setShowOption] = useState(false);
-
-  const [currentOption, setCurrentOption] = useState("강원도");
-
-  const handleChangeOption = (e) => {
-    setCurrentOption(e.target.innerText);
-    setShowOption(!showOption);
-  };
-
-  useEffect(() => {
-    searchLocation(currentOption, sortingValue);
-  }, [searchLocation, sortingValue, currentOption]);
-
-  return (
-    <Container windowSize={windowSize}>
-      <SelectBox
-        onClick={() => setShowOption(!showOption)}
-        windowSize={windowSize}
-      >
-        <Label>{currentOption}</Label>
-        <SelectOption show={showOption}>
-          {OptionValue.map((option) => {
-            return (
-              <OptionItem
-                key={option.key}
-                value={option.value}
-                onClick={handleChangeOption}
-              >
-                {option.key}
-              </OptionItem>
-            );
-          })}
-        </SelectOption>
-      </SelectBox>
-    </Container>
-  );
-};
-
-export default CustomSelect;

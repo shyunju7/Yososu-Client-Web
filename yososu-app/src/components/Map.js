@@ -10,14 +10,6 @@ import GreenMarker from "../../src/assets/green_marker.png";
 import YellowMarker from "../../src/assets/yellow_marker.png";
 import RedMarker from "../../src/assets/red_marker.png";
 import GrayMarker from "../../src/assets/gray_marker.png";
-
-const Container = styled.div`
-  width: ${(props) =>
-    props.windowSize <= 740 ? "100vw" : "calc(100vw - 40%)"};
-  margin: 20px;
-  border-radius: 12px;
-`;
-
 const { kakao } = window;
 
 const MapComponent = ({ isClickedItem, result, windowSize }) => {
@@ -238,3 +230,11 @@ const MapComponent = ({ isClickedItem, result, windowSize }) => {
 };
 
 export default MapComponent;
+
+// style
+const Container = styled.div`
+  width: ${(props) =>
+    props.windowSize <= 740 ? "100vw" : "calc(100vw - 40%)"};
+  margin: 20px;
+  border-radius: 12px;
+`;

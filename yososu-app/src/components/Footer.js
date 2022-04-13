@@ -1,6 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import footerImage from "../assets/footer_img.png";
+
+const Footer = ({ windowSize }) => (
+  <Container windowSize={windowSize}>
+    <FooterImage src={footerImage} alt="footerImage" width="140px" />
+    <CopyRight>
+      &copy; {new Date().getFullYear()}
+      Team-Whooper
+    </CopyRight>
+  </Container>
+);
+export default Footer;
+
+// style
 const Container = styled.footer`
   width: 100%;
   height: 50px;
@@ -24,14 +37,3 @@ const FooterImage = styled.img`
   margin-bottom: 2px;
   width: 90px;
 `;
-
-const Footer = ({ windowSize }) => (
-  <Container windowSize={windowSize}>
-    <FooterImage src={footerImage} alt="footerImage" width="140px" />
-    <CopyRight>
-      &copy; {new Date().getFullYear()}
-      Team-Whooper
-    </CopyRight>
-  </Container>
-);
-export default Footer;

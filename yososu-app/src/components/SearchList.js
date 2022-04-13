@@ -1,33 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import SearchListItem from "./SearchListItem";
-const Container = styled.div`
-  width: 100%;
-  background-color: transparent;
-  overflow-y: scroll;
-  display: grid;
-  gap: 2px 0px;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  margin-top: 12px;
-  margin-bottom: 12px;
-  overflow-x: hidden;
-  align-items: center;
-  -ms-overflow-style: none;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const NoData = styled.span`
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  background-color: transparent;
-  align-items: center;
-  justify-content: center;
-  color: #c4c4c4;
-  padding: 12px;
-`;
 
 const SearchList = ({ result, setClickItem }) => (
   <Container>
@@ -55,3 +28,32 @@ const SearchList = ({ result, setClickItem }) => (
 );
 
 export default SearchList;
+
+// style
+const Container = styled.div`
+  width: 100%;
+  background-color: transparent;
+  overflow-y: scroll;
+  display: grid;
+  gap: 2px 0px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  margin-top: 12px;
+  margin-bottom: 12px;
+  overflow-x: hidden;
+  align-items: center;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const NoData = styled.span`
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  color: #c4c4c4;
+  padding: 12px;
+`;

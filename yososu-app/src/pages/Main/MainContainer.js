@@ -6,12 +6,14 @@ const MainContainer = ({ windowSize }) => {
   const [result, setResult] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isClickedItem, setClickItem] = useState({ lat: null, long: null });
+  const [isClickedListButton, setClickListButton] = useState(false);
 
   const searchLocation = useCallback(
-    (searchTerm, sortingValue = "재고량순") => {
+    async (searchTerm, sortingValue = "재고량순") => {
       setResult([]);
       if (sortingValue === "재고량순") {
-        yososuApi
+        await yososuApi
           .getInventoriesInStockOrder(searchTerm)
           .then((value) => {
             setResult(value.data.data);
@@ -25,7 +27,7 @@ const MainContainer = ({ windowSize }) => {
             }, 500)
           );
       } else {
-        yososuApi
+        await yososuApi
           .getInventoriesInPriceOrder(searchTerm)
           .then((value) => {
             setResult(value.data.data);
@@ -52,6 +54,10 @@ const MainContainer = ({ windowSize }) => {
     <MainPresenter
       result={result}
       isLoading={isLoading}
+      isClickedItem={isClickedItem}
+      setClickItem={setClickItem}
+      isClickedListButton={isClickedListButton}
+      setClickListButton={setClickListButton}
       searchLocation={searchLocation}
       error={error}
       windowSize={windowSize}

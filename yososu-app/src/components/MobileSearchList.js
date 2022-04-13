@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { MdOutlineFamilyRestroom } from "react-icons/md";
 import styled from "styled-components";
 import SearchListItem from "./SearchListItem";
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: #ffffff;
@@ -11,6 +12,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
+  bottom: 0px;
+  animation: fadeUp 0.4s ease-out;
+  @keyframes fadeUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+    }
+    to {
+      transform: translateZ(0);
+    }
+  }
 `;
 
 const MobileList = styled.div`
@@ -57,9 +68,21 @@ const Guide = styled.div`
   margin-top: 12px;
 `;
 
-const MobileSearchList = ({ result, setClickItem, setClickListButton }) => {
+const MobileSearchList = ({
+  result,
+  setClickItem,
+  setClickListButton,
+  isClickedListButton,
+}) => {
+  const listRef = useRef();
+  useEffect(() => {
+    if (listRef && listRef.current && isClickedListButton) {
+      listRef.current.isClose = false;
+    }
+  });
+
   return (
-    <Container>
+    <Container ref={listRef}>
       <Guide> 판매 주요소 정보는 재고량 순으로 정렬되었습니다 :) </Guide>
       <MobileList>
         {result && result.length > 0 ? (
@@ -88,7 +111,23 @@ const MobileSearchList = ({ result, setClickItem, setClickListButton }) => {
           </div>
         )}
       </MobileList>
-      <MapButton onClick={() => setClickListButton(false)}>지도보기</MapButton>
+      <MapButton
+        onClick={() => {
+          if (listRef && listRef.current && !isClickedListButton) {
+            listRef.current.style =
+              "transition: transform 0.4s ease-out; transform: translate3d(0, 100%, 0);";
+            listRef.current.isClose = true;
+            console.log(listRef.current.isClose);
+          }
+
+          if (listRef && listRef.current.isClose) {
+            setClickListButton((prev) => !prev);
+            listRef.current.isClose = false;
+          }
+        }}
+      >
+        지도보기
+      </MapButton>
     </Container>
   );
 };

@@ -1,6 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
+const Tag = ({ stock, price }) => (
+  <TagContainer>
+    <TagItem>
+      <label>재고량</label>
+      {stock}
+    </TagItem>
+    <TagItem>
+      <label>가격</label>
+      {price}
+    </TagItem>
+  </TagContainer>
+);
+
+export default Tag;
+
+// style
 const TagContainer = styled.div`
   display: flex;
 `;
@@ -18,18 +34,3 @@ const TagItem = styled.div`
   padding: 10px auto;
   font-size: 0.5rem;
 `;
-
-const Tag = ({ stock, price }) => (
-  <TagContainer>
-    <TagItem>
-      <label>재고량</label>
-      {stock}
-    </TagItem>
-    <TagItem>
-      <label>가격</label>
-      {price}
-    </TagItem>
-  </TagContainer>
-);
-
-export default Tag;

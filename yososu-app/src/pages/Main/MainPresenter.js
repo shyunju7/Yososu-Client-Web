@@ -6,10 +6,16 @@ import MobileSearchList from "../../components/MobileSearchList";
 import Search from "../../components/Search";
 import Loading from "../../Loading";
 import { Container, ListButton } from "./styles";
-const MainPresenter = ({ result, isLoading, searchLocation, windowSize }) => {
-  const [isClickedItem, setClickItem] = useState({ lat: null, long: null });
-  const [isClickedListButton, setClickListButton] = useState(false);
-
+const MainPresenter = ({
+  result,
+  isLoading,
+  searchLocation,
+  windowSize,
+  isClickedItem,
+  setClickItem,
+  isClickedListButton,
+  setClickListButton,
+}) => {
   return isLoading ? (
     <Loading />
   ) : (
@@ -38,7 +44,7 @@ const MainPresenter = ({ result, isLoading, searchLocation, windowSize }) => {
         />
       )}
 
-      {isClickedListButton ? (
+      {windowSize <= 740 && isClickedListButton && (
         <MobileSearchList
           result={result}
           setClickItem={setClickItem}
@@ -46,7 +52,7 @@ const MainPresenter = ({ result, isLoading, searchLocation, windowSize }) => {
           setClickListButton={setClickListButton}
           isClickedListButton={isClickedListButton}
         />
-      ) : null}
+      )}
 
       <MapComponent
         isClickedItem={isClickedItem}

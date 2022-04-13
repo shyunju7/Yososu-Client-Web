@@ -1,6 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+const Header = () => {
+  return (
+    <Container>
+      <Title>요소수 요기서</Title>
+      <Text> - 요소수 어디서? 요기서!</Text>
+    </Container>
+  );
+};
+
+export default Header;
+
+// style
 const Container = styled.div`
   width: 100%;
   height: 56px;
@@ -23,14 +35,3 @@ const Text = styled.span`
   font-size: 13px;
   margin-left: 8px;
 `;
-
-const Header = () => {
-  return (
-    <Container>
-      <Title>요소수 요기서</Title>
-      <Text> - 요소수 어디서? 요기서!</Text>
-    </Container>
-  );
-};
-
-export default Header;

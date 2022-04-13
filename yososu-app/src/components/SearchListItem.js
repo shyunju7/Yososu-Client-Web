@@ -9,51 +9,6 @@ import {
 
 import { MdOutlineInvertColorsOff } from "react-icons/md";
 import styled from "styled-components";
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-bottom: 2px solid #f5f5f5;
-  padding: 20px;
-  margin-left: 10px;
-  cursor: pointer;
-  background-color: transparent;
-  &:hover {
-    background-color: rgba(0, 35, 235, 0.03);
-  }
-`;
-
-const Title = styled.h3`
-  font-size: 17px;
-  line-height: 20px;
-  color: #3e4958;
-  margin: unset;
-  margin-bottom: 12px;
-  font-family: S-CoreDream-6Bold;
-`;
-
-const TagContainer = styled.span`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-`;
-
-const Tag = styled.span`
-  width: 50%;
-  display: flex;
-  align-items: flex-end;
-  font-size: 14px;
-  font-family: S-CoreDream-6Bold;
-`;
-
-const Content = styled.div`
-  font-size: 14px;
-  color: #3e4958;
-  margin-bottom: 6px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  line-height: 18px;
-`;
 
 const SearchListItem = ({
   title,
@@ -123,3 +78,50 @@ const SearchListItem = ({
 };
 
 export default SearchListItem;
+
+// style
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #f5f5f5;
+  padding: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  &:hover {
+    background-color: rgba(0, 35, 235, 0.03);
+  }
+`;
+
+const Title = styled.h3`
+  font-size: 17px;
+  line-height: 20px;
+  color: #3e4958;
+  margin: unset;
+  margin-bottom: 12px;
+  font-family: S-CoreDream-6Bold;
+`;
+
+const TagContainer = styled.span`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+`;
+
+const Tag = styled.span`
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  font-size: 14px;
+  font-family: S-CoreDream-6Bold;
+`;
+
+const Content = styled.div`
+  font-size: 14px;
+  color: #3e4958;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 18px;
+`;

@@ -3,6 +3,86 @@ import styled from "styled-components";
 import CustomSelect from "./CustomSelect";
 import SearchList from "./SearchList";
 import { RiSortDesc } from "react-icons/ri";
+
+const Search = ({
+  setClickItem,
+  result,
+  isLoading,
+  searchLocation,
+  windowSize,
+}) => {
+  const [isVisible, setVisible] = useState(false);
+  const [sortingValue, setSortingValue] = useState("재고량순");
+
+  useEffect(() => {
+    const info = document.querySelector("#info");
+    info.addEventListener("mouseover", function () {
+      setVisible(true);
+    });
+
+    info.addEventListener("mouseout", function () {
+      setVisible(false);
+    });
+  }, []);
+
+  const onChangeSortingValue = (e) => {
+    setSortingValue(e.target.value);
+  };
+
+  return (
+    <Container windowSize={windowSize}>
+      <Contents>
+        <Title>요소수 요기서</Title>는 요소수 판매처 위치와 재고량 등의 정보를
+        제공합니다.
+        <InfoButton id="info">i</InfoButton>
+      </Contents>
+      {isVisible ? (
+        <InfoWindow>
+          <Guide>
+            * 요소수 요기서 서비스는 환경부의 공공 데이터를 활용하였습니다 :)
+          </Guide>
+          <Guide>
+            * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후에
+            방문바랍니다.
+          </Guide>
+          <Guide>
+            * 요소수 요기서 페이지에는 S-Core에서 제공한 에스코어 드림 폰트가
+            적용되어 있습니다.
+          </Guide>
+          <Guide>* 요소수 요기서는 KakaoMap API를 활용하였습니다.</Guide>
+        </InfoWindow>
+      ) : null}
+      <SearchWrapper>
+        <CustomSelect
+          sortingValue={sortingValue}
+          searchLocation={searchLocation}
+          windowSize={windowSize}
+        />
+      </SearchWrapper>
+
+      <SortingWrapper>
+        <RiSortDesc size="16px" color="#3e4958" />
+        <SortingSelect value={sortingValue} onChange={onChangeSortingValue}>
+          재고량순
+          <option defaultChecked value="재고량순">
+            재고량순
+          </option>
+          <option value="가격순">가격순</option>
+        </SortingSelect>
+      </SortingWrapper>
+      <SearchList
+        result={result}
+        setClickItem={setClickItem}
+        isLoading={isLoading}
+        windowSize={windowSize}
+      />
+    </Container>
+  );
+};
+
+export default Search;
+
+// style
 const Container = styled.div`
   width: ${(props) => (props.windowSize <= 740 ? "" : "50%")};
   height: 100%;
@@ -102,81 +182,3 @@ const SortingSelect = styled.select`
   font-family: S-CoreDream-4Regular;
   margin-left: 1px;
 `;
-
-const Search = ({
-  setClickItem,
-  result,
-  isLoading,
-  searchLocation,
-  windowSize,
-}) => {
-  const [isVisible, setVisible] = useState(false);
-  const [sortingValue, setSortingValue] = useState("재고량순");
-
-  useEffect(() => {
-    const info = document.querySelector("#info");
-    info.addEventListener("mouseover", function () {
-      setVisible(true);
-    });
-
-    info.addEventListener("mouseout", function () {
-      setVisible(false);
-    });
-  }, []);
-
-  const onChangeSortingValue = (e) => {
-    setSortingValue(e.target.value);
-  };
-
-  return (
-    <Container windowSize={windowSize}>
-      <Contents>
-        <Title>요소수 요기서</Title>는 요소수 판매처 위치와 재고량 등의 정보를
-        제공합니다.
-        <InfoButton id="info">i</InfoButton>
-      </Contents>
-      {isVisible ? (
-        <InfoWindow>
-          <Guide>
-            * 요소수 요기서 서비스는 환경부의 공공 데이터를 활용하였습니다 :)
-          </Guide>
-          <Guide>
-            * 실제 재고 현황과 일부 차이가 있을 수 있으니 확인 후에
-            방문바랍니다.
-          </Guide>
-          <Guide>
-            * 요소수 요기서 페이지에는 S-Core에서 제공한 에스코어 드림 폰트가
-            적용되어 있습니다.
-          </Guide>
-          <Guide>* 요소수 요기서는 KakaoMap API를 활용하였습니다.</Guide>
-        </InfoWindow>
-      ) : null}
-      <SearchWrapper>
-        <CustomSelect
-          sortingValue={sortingValue}
-          searchLocation={searchLocation}
-          windowSize={windowSize}
-        />
-      </SearchWrapper>
-
-      <SortingWrapper>
-        <RiSortDesc size="16px" color="#3e4958" />
-        <SortingSelect value={sortingValue} onChange={onChangeSortingValue}>
-          재고량순
-          <option defaultChecked value="재고량순">
-            재고량순
-          </option>
-          <option value="가격순">가격순</option>
-        </SortingSelect>
-      </SortingWrapper>
-      <SearchList
-        result={result}
-        setClickItem={setClickItem}
-        isLoading={isLoading}
-        windowSize={windowSize}
-      />
-    </Container>
-  );
-};
-
-export default Search;

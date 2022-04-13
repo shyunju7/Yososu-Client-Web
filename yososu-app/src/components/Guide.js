@@ -1,6 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
+const Guide = () => (
+  <Container>
+    <Row color="#0AB01B">
+      <ColorPalette color="#0AB01B" />
+      여유
+    </Row>
+    <Row color="#F3D432">
+      <ColorPalette color="#F3D432" />
+      보통
+    </Row>
+    <Row color="#EC3535">
+      <ColorPalette color="#EC3535" />
+      부족
+    </Row>
+    <Row color="#c4c4c4">
+      <ColorPalette color="#c4c4c4" />
+      매진
+    </Row>
+  </Container>
+);
+
+export default Guide;
+
+// style
 const Container = styled.div`
   width: 120px;
   height: 120px;
@@ -31,26 +55,3 @@ const ColorPalette = styled.div`
   background-color: ${(props) => (props.color ? props.color : "#ffffff")};
   margin-right: 36px;
 `;
-
-const Guide = () => (
-  <Container>
-    <Row color="#0AB01B">
-      <ColorPalette color="#0AB01B" />
-      여유
-    </Row>
-    <Row color="#F3D432">
-      <ColorPalette color="#F3D432" />
-      보통
-    </Row>
-    <Row color="#EC3535">
-      <ColorPalette color="#EC3535" />
-      부족
-    </Row>
-    <Row color="#c4c4c4">
-      <ColorPalette color="#c4c4c4" />
-      매진
-    </Row>
-  </Container>
-);
-
-export default Guide;
